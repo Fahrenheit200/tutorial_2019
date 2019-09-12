@@ -1,0 +1,3 @@
+[submodule "wiki"]
+	path = wiki
+	url = https://github.com/SYSU-AERO-SWIFT/tutorial_2019.wiki.git
