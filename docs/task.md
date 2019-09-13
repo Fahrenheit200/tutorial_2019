@@ -89,8 +89,7 @@ mv task_submit/example_your_name task_submit/your_name #改成你自己的名字
 - 1、入门OpenCV。
 - 2、使用makefile。
 - 3、掌握基本的markdown语法。
-- 4、了解多线程编程。
-- 5、使用shell脚本。
+- 4、使用shell脚本。
 
 选修内容：
 
@@ -99,7 +98,7 @@ mv task_submit/example_your_name task_submit/your_name #改成你自己的名字
 
 本周任务：
 
-- 1、编写一个**多文件**的C++程序，阅读[《中大空中机器人团队代码规范》](https://github.com/SYSU-AERO-SWIFT/tutorial_2019/blob/master/docs/team_code_style.md) ，用OpenCV写一个多线程的简易计时工具Timer。在计时的同时处理用户输入（开始，暂停，继续，停止，退出）。请查看[具体任务说明](https://github.com/SYSU-AERO-SWIFT/tutorial_2019/blob/master/docs/exercises/background_recovery.md)。所有代码的命名以及架构必须按照《团队代码规范》来进行。
+- 1、编写一个**多文件**的C++程序，阅读[《中大空中机器人团队代码规范》](https://github.com/SYSU-AERO-SWIFT/tutorial_2019/blob/master/docs/team_code_style.md) ，用OpenCV写一个视频背景还原器，根据上面的代码规范第三点工程目录格式，分bin，build，src，include，resource文件夹，makefile与这些文件夹同级。
 - 2、为上述工程写一个makefile文件并编译运行通过。
 - 3、用git上传到Github上，并使用markdown按照《团队代码规范》写一份说明文档`README.md`。
 - 4、完成[程序设计能力练习](https://github.com/SYSU-AERO-SWIFT/tutorial_2019/blob/master/docs/exercises/programming_exercise.md)第二周题目IP Networks，使用g++编译。  
@@ -109,10 +108,13 @@ mv task_submit/example_your_name task_submit/your_name #改成你自己的名字
 
 | 评分项               | 积分值                      |
 | ----------------    | -------------------------- |
-| 编写简易计时工具，实现 start, stop, quit  | 50~60分        |
-| 实现 pause, resume                      | 25~30分        |
+| （不计效果，三个案例都实现）还原显示灰度图/还原显示彩色图  | 30分/60分  （二选一）      |
+| 0.mp4还原效果（缺陷噪点集中区约占图片面积1/10：0%，零散噪点：50%，完美:100%                      | 0～30分        |
+| 1.mp4还原效果（缺陷噪点集中区约占图片面积1/10：0%，零散噪点：50%，完美:100%                      | 0～50分        |
+| 2.mp4还原效果（缺陷噪点集中区约占图片面积1/10：0%，零散噪点：50%，完美:100%                      | 0～20分        |
+| 程序还原时间在1.5s内 | 10分（附加，总分不超过200）|
 | 使用 makefile 成功编译运行       | 10分              |
-| 编写`README.md`       | 12~15分              |
+| 编写`README.md`       | 8~10分              |
 | 完成程序设计题（IP networks）| 4~5分              |
 | Shell 练习题       | 15分              |
 
