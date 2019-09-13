@@ -1,8 +1,8 @@
 ## 空中机器人团队代码规范
-- **作者**：吉祥物-刘寅一（Champion-Liu）
-- **修订**：吉祥物-刘寅一
-- **日期**：2018-09-13
-- **版本**：1.0.0
+- **作者**：张昊
+- **修订**：张昊
+- **日期**：2019-09-13
+- **版本**：1.1.0
 - **摘要**：这是空中机器人团队的代码规范，包含这么写代码及其注释、readme、测试程序、文件结构，git上怎么写comment和wiki、什么情况下可以commit、什么情况下建分支和merge。
 
 ---
@@ -12,7 +12,7 @@
 （2）**表头信息**：表头信息非常重要，包含*这个坑是谁最先挖的（作者/Author）*、*最后一位添加bug的人（修订/Revised）*、*最后一次修改的日期（日期/Date）*、*最新的更改（版本/Version）*、*展示一下您最新添加的bug（摘要/Abstract）*。
 
 ```md
-## Title Here: Readme Tutorial 
+## Title Here: Readme Tutorial
 - Author: Champion-Liu
 - Revised: Champion-Liu
 - Date: 2018-09-13
@@ -23,7 +23,7 @@
 （3）**说明内容**：包括模块怎么的功能是什么、接口是什么、需要哪些依赖库、怎么编译、测试程序怎么运行，如果没有的话统统不准git commit到master分支上。
 
 ```md
-### Functions: 
+### Functions:
 	... //Brief is okay
 ### Interfaces:
 	... //C++ style declaration

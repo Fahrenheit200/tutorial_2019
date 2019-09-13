@@ -1,3 +1,5 @@
+
+
 # AERO-SWIFT 秋季实战任务
 
 ## 任务须知
@@ -23,12 +25,12 @@
 
 相关事项：  
 - git可以多次提交, 我们以**截止时间前的最后一次提交**的结果作为标准。  
-- 我们鼓励大一学生积极参与，对于**大一**学生，所有部分的积分值会有乘以**1.2**倍的加成。 
+- 我们鼓励大一学生积极参与，对于**大一**学生，所有部分的积分值会有乘以**1.2**倍的加成。
 - 一些评分项有划定范围（如5~10分），完成评分项要求即可拿到范围内最低分，是否能拿更高分将以你的评分项完成情况评定。
-- 积分值（包括细项）只精确到小数点后一位。 
+- 积分值（包括细项）只精确到小数点后一位。
 - 请在截止时间前及时提交你的代码，如果超过截止时间未提交，我们会视情况相应扣分。  
 - 如果最终版本里出现了错误文件，我们会视情况相应扣分。  
-- 考核相关负责人：曾祥伟、张昊、刘寅一、李沐晗。
+- 考核相关负责人：曾祥伟、张昊、马飞鹏、张涵建、张浩轩、卢淮智、李国锵、林浩鑫。
 - 本评分标准最终解释权由中大空中机器人队所有。  
 
 ## 任务成果提交方式
@@ -66,12 +68,10 @@ mv task_submit/example_your_name task_submit/your_name #改成你自己的名字
 
 本周任务：
 
-- 1、在命令行使用g++编译一个C++程序, 输出Hello World。请不要使用任何类型的IDE。
+- 1、在命令行使用vim编辑一个C++程序，然后用g++编译这个C++程序, 输出Hello World。请不要使用任何类型的IDE。
 - 2、使用git把上述整个工程提交到Github上。**在此工程中，请勿提交不重要的中间文件。**（如.o文件和编译的可执行文件。提示：使用.gitignore）
-- 3、简单描述git的工作流程，配上合适的图来描述，解释git的分支的原理，以及如何恰当地合并git分支。（写在Word文档中即可，300字以内）
-- 4、简单写一写你学习到的Vim/Emacs的常用操作或命令（写在Word文档中即可，100字以内），一并上传到Github上。
-- 5、完成[程序设计能力练习](https://github.com/SYSU-AERO-SWIFT/tutorial_2018/blob/master/docs/exercises/programming_exercise.md)第一周题目Palindromes，同样使用g++编译。  
-- 6、预先安装OpenCV，参考资料可见入门教程。
+- 3、完成[程序设计能力练习](https://github.com/SYSU-AERO-SWIFT/tutorial_2018/blob/master/docs/exercises/programming_exercise.md)第一周题目Palindromes，同样使用g++编译。  
+- 4、预先安装OpenCV，参考资料可见入门教程。
 
 评分标准：  
 
@@ -80,7 +80,7 @@ mv task_submit/example_your_name task_submit/your_name #改成你自己的名字
 | 成功上传Hello World工程      | 27~30分              |  
 | 阐述清晰git的原理和分支        | 10~20分             |  
 | 阐述常用Vim/Emacs操作或命令  | 5~10分              |  
-| 完成程序设计题（Palindromes）| 4~5分              | 
+| 完成程序设计题（Palindromes）| 4~5分              |
 
 
 ## 基础考核 - 第二周（9.30-10.6）
@@ -100,11 +100,10 @@ mv task_submit/example_your_name task_submit/your_name #改成你自己的名字
 
 本周任务：
 
-- 1、编写一个**多文件**的C++程序，阅读[《中大空中机器人团队代码规范》](https://github.com/SYSU-AERO-SWIFT/tutorial_2018/blob/master/docs/team_code_style.md) ，用OpenCV写一个多线程的简易计时工具Timer。在计时的同时处理用户输入（开始，暂停，继续，停止，退出）。请查看[具体任务说明](https://github.com/SYSU-AERO-SWIFT/tutorial_2018/blob/master/docs/exercises/timer_exercise.md)。所有代码的命名以及架构必须按照《团队代码规范》来进行。
+- 1、编写一个**多文件**的C++程序，阅读[《中大空中机器人团队代码规范》](https://github.com/SYSU-AERO-SWIFT/tutorial_2019/blob/master/docs/team_code_style.md) ，用OpenCV写一个多线程的简易计时工具Timer。在计时的同时处理用户输入（开始，暂停，继续，停止，退出）。请查看[具体任务说明](https://github.com/SYSU-AERO-SWIFT/tutorial_2019/blob/master/docs/exercises/background_recovery.md)。所有代码的命名以及架构必须按照《团队代码规范》来进行。
 - 2、为上述工程写一个makefile文件并编译运行通过。
 - 3、用git上传到Github上，并使用markdown按照《团队代码规范》写一份说明文档`README.md`。
-- 4、完成[程序设计能力练习](https://github.com/SYSU-AERO-SWIFT/tutorial_2018/blob/master/docs/exercises/programming_exercise.md)第二周题目IP Networks，使用g++编译。  
-- 5、完成[Shell练习题](https://github.com/SYSU-AERO-SWIFT/tutorial_2018/blob/master/docs/exercises/shell_exercise.md)。教程可参考[菜鸟教程](http://www.runoob.com/linux/linux-shell.html)，掌握基础命令即可。
+- 4、完成[程序设计能力练习](https://github.com/SYSU-AERO-SWIFT/tutorial_2019/blob/master/docs/exercises/programming_exercise.md)第二周题目IP Networks，使用g++编译。  
 
 
 评分标准：  
@@ -115,7 +114,7 @@ mv task_submit/example_your_name task_submit/your_name #改成你自己的名字
 | 实现 pause, resume                      | 25~30分        |
 | 使用 makefile 成功编译运行       | 10分              |
 | 编写`README.md`       | 12~15分              |
-| 完成程序设计题（IP networks）| 4~5分              | 
+| 完成程序设计题（IP networks）| 4~5分              |
 | Shell 练习题       | 15分              |
 
 
@@ -130,7 +129,6 @@ mv task_submit/example_your_name task_submit/your_name #改成你自己的名字
 选修内容：
 
 - 1、熟练运用STL标准库（包括vector, map, list, thread, mutex, atomic, auto_ptr等）。
-- 2、了解线程的同步和互斥机制，了解读者与写者问题。
 
 本周任务：
 
@@ -145,14 +143,12 @@ mv task_submit/example_your_name task_submit/your_name #改成你自己的名字
 | 评分项               | 积分值                      |
 | ----------------    | -------------------------- |
 | 使用cmake编译工程并运行通过     | 15分        |
-| 工程质量及完整性             | 10~20分       |
 | 图片处理出各自连贯的数字       | 30分        |
 | 定位四个数字，分割数字 （5~20组Samples）       | 5~20分        |
 | 级别一测试样本识别率 = 60% ~ 100%                 | 10~50分    |
 | 级别二测试样本识别率 = 50% ~ 95% （>=95%算满分）   | 5~50分     |
 | 级别三测试样本识别率 = 40% ~ 90% （>=90%算满分）   | 0~50分     |
 | 编写`README.md`       | 8~10分              |
-| 测试过程结果完整清晰     | 3~5分        |
 
 
 ## 项目考核 - 第四至七周（10.14-11.9）
@@ -165,5 +161,3 @@ mv task_submit/example_your_name task_submit/your_name #改成你自己的名字
 我们会根据你的努力情况酌情给分。  
 具体考核内容请查看项目考核题目。  
 加油！ ヽ(ﾟ∀ﾟ*)ﾉ━━━ｩ♪  
-
-

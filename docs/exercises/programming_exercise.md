@@ -16,7 +16,7 @@
 ### Input
 编写一个函数，接口如下:
 ```
-string longestCommonPrefix(vector<string>& strs) {
+string longestCommon(vector<string>& strs) {
 
 }
 ```
