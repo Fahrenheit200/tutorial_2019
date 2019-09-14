@@ -57,7 +57,7 @@ private:
 ![](result/res0.jpg)
 
 video1.mp4结果如下：
-![](result/res1.jpg)
+![](result/res1.JPG)
 
 video2.mp4结果如下：
 ![](result/res2.png)
@@ -97,11 +97,11 @@ ubuntu$:
 ### 结果图片效果参考:
 
 大片集中缺陷，分值0%：
-![](result/0%.png)
+![](result/0percent.png)
 
 零散噪点，分值50%：
-![](result/50%.png)
+![](result/50percent.png)
 
 完美，分值100%：
-![](result/res1.jpg)
+![](result/res1.JPG)
 

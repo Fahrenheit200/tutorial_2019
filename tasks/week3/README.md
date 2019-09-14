@@ -2,14 +2,13 @@
 
 必学内容：
 
-- 1、熟悉ROS的基本操作，包括文件架构、通信机制(Publisher, Subscriber, Service, Client, msgs)、功能包的创建、节点、服务器等。  
+- 1、熟悉ROS的基本操作，包括文件架构、通信机制(Publisher, Subscriber, Service, Client, msgs)、功能包的创建、节点、服务器等。（参考资料：[ROS官方文档](http://wiki.ros.org/cn)、[MOOC-ROS教程](https://www.icourse163.org/course/ISCAS-1002580008)、bilibili网课资源）  
 - 2、熟练使用检索工具，善于查看官方文档获取资料。  
 - 3、熟练使用cmake。  
-- 4、参考资料：[ROS官方文档](http://wiki.ros.org/cn)、[MOOC-ROS教程](https://www.icourse163.org/course/ISCAS-1002580008)、bilibili网课资源。  
 
 选修内容：
 
-- 1、了解ROS的可视化工具，包括二维的rosplot，三维的rviz。
+- 1、了解ROS常用的可视化调试工具，包括二维的rosplot，三维的rviz等。
 
 本周任务：
 - 1、 编写一个package，其中包含一个信息发布节点Publisher，和一个信息订阅节点Subscriber。信息发布节点产生随机数据并发布，消息类型要求使用自己创建的，信息订阅节点订阅并将数据输出到终端。
