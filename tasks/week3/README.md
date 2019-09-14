@@ -5,6 +5,7 @@
 - 1、熟悉ROS的基本操作，包括文件架构、通信机制(Publisher, Subscriber, Service, Client, msgs)、功能包的创建、节点、服务器等。（参考资料：[ROS官方文档](http://wiki.ros.org/cn)、[MOOC-ROS教程](https://www.icourse163.org/course/ISCAS-1002580008)、bilibili网课资源）  
 - 2、熟练使用检索工具，善于查看官方文档获取资料。  
 - 3、熟练使用cmake。  
+- 4、参考资料：[ROS官方文档](http://wiki.ros.org/cn)、[MOOC-ROS教程](https://www.icourse163.org/course/ISCAS-1002580008)、bilibili网课资源。  
 
 选修内容：
 
