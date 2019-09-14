@@ -1,8 +1,0 @@
-prefix=/home/mafp/build/ros_tutorials/ros_car/install
-
-Name: little_car
-Description: Description of little_car
-Version: 0.0.0
-Cflags: 
-Libs: -L/home/mafp/build/ros_tutorials/ros_car/install/lib 
-Requires: 

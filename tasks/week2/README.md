@@ -8,28 +8,27 @@
 
 选修内容：
 
-- 1、多旋翼无人机飞行操控。（队伍会提供玩具无人机，如果你在学校有空余时间，可以来实验室拿飞行器去训练。训练飞行器操控技巧的一个重要目的在于：避免损失贵重的无人机。无人机在调试或实际飞行时可能遇到意外情况或者失控，如果没有良好的飞行器操控技巧我们不会冒险让你使用无人机。）
+- 1、多旋翼无人机飞行操控。（队伍会提供[DJI Flight Simulator](https://www.dji.com/cn/simulator)飞行模拟器，如果你在学校有空余时间，可以来实验室的模拟器上练习。训练飞行器操控技巧的一个重要目的在于：避免损失贵重的无人机。无人机在调试或实际飞行时可能遇到意外情况或者失控，如果没有良好的飞行器操控技巧我们不会冒险让你使用无人机。）
 - 2、习惯阅读英文文档以及官方Document。
 
 本周任务：
-
-- 1、编写一个**多文件**的C++程序，具体要求请阅读[详细说明](https://github.com/SYSU-AERO-SWIFT/tutorial_2019/blob/master/tasks/week2/background_recovery.md)
-- 2、阅读[《中大空中机器人团队代码规范》](https://github.com/SYSU-AERO-SWIFT/tutorial_2019/wiki/%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C%E8%A7%84%E8%8C%83) ，用OpenCV写一个视频背景还原器，根据上面的代码规范第三点工程目录格式，分bin，build，src，include，resource文件夹，makefile与这些文件夹同级。
+- 1、编写一个**多文件**的C++程序，用OpenCV写一个视频背景还原器。具体要求请阅读[详细说明](https://github.com/SYSU-AERO-SWIFT/tutorial_2019/blob/master/tasks/week2/background_recovery.md)。并阅读[《中大空中机器人团队代码规范》](https://github.com/SYSU-AERO-SWIFT/tutorial_2019/wiki/%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C%E8%A7%84%E8%8C%83) ，按照相应规范编写该程序。
 - 2、为上述工程写一个makefile文件并编译运行通过。
 - 3、用git上传到Github上，并使用markdown按照《团队代码规范》写一份说明文档`README.md`。
 - 4、完成[程序设计能力练习](https://github.com/SYSU-AERO-SWIFT/tutorial_2019/blob/master/tasks/week2/programming_exercise.md)第二周题目链表加法，使用g++编译。  
-
+- 5、 完成[Shell练习题](https://github.com/SYSU-AERO-SWIFT/tutorial_2019/blob/master/shell_exercise.md)。可参考[菜鸟教程](http://www.runoob.com/linux/linux-shell.html)，掌握基础命令即可。
 
 评分标准：  
 
 | 评分项               | 积分值                      |
 | ----------------    | -------------------------- |
-| （不计效果，三个案例都实现）还原显示灰度图/还原显示彩色图  | 30分/60分  （二选一）      |
-| 0.mp4还原效果（缺陷噪点集中区约占图片面积1/10：0%，零散噪点：50%，完美:100%                      | 0～30分        |
-| 1.mp4还原效果（缺陷噪点集中区约占图片面积1/10：0%，零散噪点：50%，完美:100%                      | 0～50分        |
-| 2.mp4还原效果（缺陷噪点集中区约占图片面积1/10：0%，零散噪点：50%，完美:100%                      | 0～20分        |
-| 程序还原时间在1.5s内 | 10分（附加，总分不超过200）|
+| 还原并显示背景图  | 60分       |
+| 成功还原video0.mp4背景图                  | 0～30分        |
+| 成功还原video1.mp4背景图                  | 0～50分        |
+| 成功还原video2.mp4背景图                  | 0～20分        |
+| 输出程序运行计时                  | 5分        |
+| 程序还原时间均在限时内 | 10分（附加，总分不超过200）|
 | 使用 makefile 成功编译运行       | 10分              |
-| 编写`README.md`       | 10分              |
-| 完成程序设计题（链表加法）| 5分              |
-| Shell 练习题       | 15分              |
+| 编写说明文档       | 10分              |
+| 完成第二周程序设计题 | 5分              |
+| Shell 练习题       | 10分              |
