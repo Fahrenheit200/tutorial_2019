@@ -53,13 +53,13 @@ private:
 输入是把视频的路径作为参数，在屏幕中长时间展示出还原出的背景图片  
 如0.mp4最终还原如下：
 
-![](resource/res0.jpg)
+![](result/res0.jpg)
 
 1.mp4结果如下：
-![](resource/res1.JPG)
+![](result/res1.JPG)
 
 2.mp4结果如下：
-![](resource/res2.png)
+![](result/res2.png)
 
 
 命令行输入参数如下
