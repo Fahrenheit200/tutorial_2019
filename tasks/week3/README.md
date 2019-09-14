@@ -15,7 +15,7 @@
 - 1、 编写一个package，其中包含一个信息发布节点Publisher，和一个信息订阅节点Subscriber。信息发布节点产生随机数据并发布，消息类型要求使用自己创建的，信息订阅节点订阅并将数据输出到终端。
 - 2、编写launch文件并用roslaunch启动节点。
 - 3、编写Service和Client，Client产生一个0到1内的随机数，然后发给Service，Service接受到请求后，判断随机数是否小于0.5，若是则回应1，否则回应0。Client接收到回应后，先输出产生的随机数，然后输出Yes或No到终端。
-- 4、 编写一个动态参数服务器。
+- 4、 相应地编写一个动态参数服务器。
 - 5、 利用提供的小车模型和源码，模仿源码并在源码的基础上修改，试着实现小车的转弯、停止，并尝试使用Publisher来发布指令来控制小车的方向和速度。
 - 6、 让小车走一个S形（注意，我们在小车的行走中将加上噪声，这意味着你需要位置信息来做调整）。
 - 7、提交时请使用.gitignore忽略追踪中间文件（build、devel等）。
@@ -36,7 +36,7 @@
 
 怎么运行所提供的程序？  
 ```
-cd little_car  # 确保在catkin workspace下
+cd little_car  # 请先确保工程在catkin workspace下
 catkin_make  
 source devel/setup.bash
 roslaunch launch/little_car.launch
