@@ -5,18 +5,9 @@
 
 ## 考核仓库指南
 
-<del>考核过程中，我们提供部分 `Tutorial Wiki`，以帮助快速学习入门，详见：[队伍入门教程](https://github.com/SYSU-AERO-SWIFT/tutorial_2019/blob/master/wiki/tutorial.md)  
-秋季实战考核任务，详见： [秋季实战任务](https://github.com/SYSU-AERO-SWIFT/tutorial_2019/blob/master/docs/task.md)</del>
-
-| 文件               | 用途                         |
-| ---------------- | -------------------------- |
-| [docs/task.md](https://github.com/SYSU-AERO-SWIFT/tutorial_2019/blob/master/docs/task.md)          | 秋季实战任务列表                   |
-| [task_submit/](https://github.com/SYSU-AERO-SWIFT/tutorial_2019/tree/master/task_submit)     | 用于提交任务结果的文件夹（注意，是在你的分支上提交）|
-| [docs/team_code_style.md](https://github.com/SYSU-AERO-SWIFT/tutorial_2019/blob/master/docs/team_code_style.md)|团队代码规范|
-
 ### 使用 GitHub Wiki
 
-我们建立了[项目 Wiki](https://github.com/SYSU-AERO-SWIFT/tutorial_2019/wiki) 帮助各位熟悉考核流程，掌握各种工具的基本用法。请参考 Wiki 提供的信息完成考核。欢迎对不涉及具体题目而与考核有关的知识点做补充，Wiki 仓库作为 submodule 保存在 `wiki` 文件夹下。
+我们建立了[项目 Wiki](https://github.com/SYSU-AERO-SWIFT/tutorial_2019/wiki) 帮助各位熟悉考核流程，掌握各种工具的基本用法。请参考 Wiki 提供的信息完成考核，**仔细阅读 Git 部分按要求提交考核任务**。欢迎对不涉及具体题目而与考核有关的知识点做补充，Wiki 仓库作为 submodule 保存在 `wiki` 文件夹下。
 
 ### 发起 Issues
 
