@@ -5,17 +5,17 @@
 
 ## 考核仓库指南
 
-### 使用 GitHub Wiki
+### 使用 [GitHub Wiki](https://github.com/SYSU-AERO-SWIFT/tutorial_2019/wiki)
 
 我们建立了[项目 Wiki](https://github.com/SYSU-AERO-SWIFT/tutorial_2019/wiki) 帮助各位熟悉考核流程，掌握各种工具的基本用法。请参考 Wiki 提供的信息完成考核，**仔细阅读 Git 部分按要求提交考核任务**。欢迎对不涉及具体题目而与考核有关的知识点做补充，Wiki 仓库作为 submodule 保存在 `wiki` 文件夹下。
 
-### 发起 Issues
+### 发起 [Issues](https://github.com/SYSU-AERO-SWIFT/tutorial_2019/issues)
 
-Github issues 用于项目交流，如有任何问题可以在**考核**仓库的 [Issues](https://github.com/SYSU-AERO-SWIFT/tutorial_2019/issues) 中发起讨论（不是自己的答题仓库）。有意义的问题将**加分**并载入 Wiki 中。
+Github issues 用于项目交流，如有任何问题可以在**考核**仓库的 [Issues](https://github.com/SYSU-AERO-SWIFT/tutorial_2019/issues) 中发起讨论（不是自己的答题仓库），提交需要遵循模板。有意义的讨论将**加分**并载入 Wiki 中。
 
-### 提交 Pull requests
+### 提交 [Pull requests](https://github.com/SYSU-AERO-SWIFT/tutorial_2019/pulls)
 
-考核任务还在不断更新优化之中，如有任何推荐的补充资料或者错误更正可以[提交 PR](https://github.com/SYSU-AERO-SWIFT/tutorial_2019/pulls)，我们会将你的修改建议合并到考核仓库中。
+考核任务还在不断更新优化之中，在提交考核任务之外，如有任何推荐的补充资料或者错误更正也欢迎按模板[提交 PR](https://github.com/SYSU-AERO-SWIFT/tutorial_2019/pulls)，我们会将你的修改建议合并到考核仓库中。
 
 ## 版本说明
 
