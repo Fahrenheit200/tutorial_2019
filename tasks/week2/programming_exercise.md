@@ -5,37 +5,6 @@
 - 只要简单测试Accepted就可以得分，代码简洁可得满分。请独立认真完成。
 - 可能需要先了解的知识：std::string、vector
 
-## 第一周题目 —— 最大公共后缀
-
-### Description
-
-编写一个函数来查找字符串数组中的最长公共后缀。
-
-如果不存在公共前缀，返回空字符串 ""。
-
-### Input
-编写一个函数，接口如下:
-```
-string longestCommon(vector<string>& strs) {
-
-}
-```
-
-### Output
-返回最长的公共后缀
-
-### Sample Input
-```
-ppp
-pplpp
-lpp
-```
-
-### Sample Output
-```
-pp
-```
-
 
 ## 第二周题目 —— 链表加法
 
@@ -55,12 +24,12 @@ pp
  */
 
 ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-        
+
 }
 ```
 
 ### Output
-A + B链表的结果值 
+A + B链表的结果值
 
 ### Sample Input And Output
 ```
