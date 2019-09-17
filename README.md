@@ -1,5 +1,4 @@
-# SYSU AERO-SWIFT 2019 秋季考核
-
+# SYSU AERO-SWIFT 2019 秋季考核 
 ![Swift Team Logo](https://github.com/SYSU-AERO-SWIFT/tutorial_2019/blob/master/logo.jpg)  
 **欢迎来到中大空中机器人队 2019 秋季考核任务。下面是一些关于考核和工程的相关说明。**
 
