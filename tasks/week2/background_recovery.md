@@ -8,13 +8,13 @@
 2. `makefile` 多文件编译。
 3. 命令行参数的应用。
 
-**具体要求：**
+### **具体要求：**
 
-1. 给定三个背景被物体遮挡的视频(`./resource/*.mp4`)，程序每次读取一个视频，还原出背景并使用 `imshow` 函数展示出来。
+1. 题目提供了三个背景被物体遮挡的视频(`./resource/*.mp4`)，程序每次读取一个视频，还原出背景并使用 `imshow` 函数展示出来。
 2. 使用计时工具，在命令行输出 `Recover.process()` 的处理时间（如 `1.343s`）。
 3. 请在文档中写明编译方法、测试方法，简述算法实现流程。
 4. 按照[团队代码规范](https://github.com/SYSU-AERO-SWIFT/tutorial_2019/wiki/%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C%E8%A7%84%E8%8C%83)中第三点工程目录格式，分 `bin`，`build`，`src`，`include`，`resource` 文件夹，`makefile` 与这些文件夹同级。
-5. **将结果图片保存在新建的 `result` 文件夹中。**
+5. 将结果图片保存在新建的 `result` 文件夹中。
 6. 将处理代码编写在 `Recovery` 类中，分文件 `Recovery.h` / `Recovery.cpp` 对类进行定义/实现，`Recovery` 类如下：
 
 ```cpp
@@ -46,6 +46,10 @@ private:
 
 };
 ```
+
+7. <b><font size="5"><span style="color:Red;">注意：请不要使用 OpenCV 自带的 [`cv::BackgroundSubtractor`](https://docs.opencv.org/3.4/d7/df6/classcv_1_1BackgroundSubtractor.html) 类及其子类来完成任务！</span></b>例如不能套用 [`cv::BackgroundSubtractorMOG2`](https://docs.opencv.org/3.4/d7/d7b/classcv_1_1BackgroundSubtractorMOG2.html) 的[教程](https://docs.opencv.org/3.4/d1/dc5/tutorial_background_subtraction.html)中展示的该类用法。</font>
+
+本任务旨在让大家熟悉 OpenCV 基本类和函数的使用，若用 `BackgroundSubtractor` 类解决问题不能对提高同学们的编程能力起到作用。请自己开动脑筋使用基本库函数完成提取任务。
 
 ### 输入与输出格式参考：
 
@@ -100,4 +104,4 @@ $
 零散噪点，分值 **50%**：
 ![50 percent](demo/50percent.png)
 
-完美，分值 **100%**：见“输出格式参考”
+完美，分值 **100%**：见“输出格式参考”。
