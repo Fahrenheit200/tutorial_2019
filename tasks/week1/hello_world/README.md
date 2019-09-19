@@ -8,8 +8,8 @@
 
 ### How to run?
 ```shell
-$ g++ hello_world.cpp -o hello_world
-$ ./hello_world
+$ g++ hello_world.cpp -o hello_world.out
+$ ./hello_world.out
 ```
 
 ### Expected Output

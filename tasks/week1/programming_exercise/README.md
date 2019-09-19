@@ -9,8 +9,8 @@
 ### How to run?
 
 ```shell
-$ g++ findLongestCommon.cpp -o findLongestCommon
-$ ./findLongestCommon
+$ g++ findLongestCommon.cpp -o findLongestCommon.out
+$ ./findLongestCommon.out
 ```
 
 ### Sample Input
