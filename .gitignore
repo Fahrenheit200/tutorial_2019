@@ -1,3 +1,5 @@
 *.[oa]
 build/
 devel/
+#以下是新添加的
+*.out
