@@ -2,46 +2,43 @@
 
 using namespace std;
 
-string longestCommon(const vector<string>& strs)
+string longestCommon(const std::vector<string>& strs)
 {
-	if(strs.size() <= 0)
-		return string();
-	else if(strs.size() == 1)
-		return strs[0];
-
-	string str = strs[0];
-	if(str.size() <= 0)
+	if(!strs.size())
 		return string();
 
-	int common_count = 0, idx = 0;
+	std::vector<int> strs_len {};
+	for(string str : strs)
+		strs_len.push_back(str.length());
 
-	bool isEqual = true;
-	while(isEqual)
+	int loop_times = *std::min_element(strs_len.begin(), strs_len.end());
+	if(loop_times)
 	{
-		int tmp = str.size() - common_count - 1;
-		if(tmp < 0)
-			break;
-		else
-			idx = tmp;
-		char chr = str[idx];
-		for(int i = 1; i < strs.size(); i++)
+		bool flag = true;
+		int i = 0;
+		for(i = 1; i <= loop_times && flag; )
 		{
-			int idy = strs[i].size() - common_count - 1;
-			if(idy < 0)
-				break;
-			if(chr != strs[i][idy])
+			char chr = strs[0][strs[0].size() - i];
+			for(string str : strs)
 			{
-				isEqual = false;
-				break;
+				if(chr != str[str.size() - i])
+				{
+					flag = false;
+					break;
+				}
 			}
-
+			if(flag)
+				i++;
+			else
+				i--;
 		}
-		if(isEqual)
-			common_count++;
+		if(i >= loop_times)
+			i--;
+		int index = strs[0].size() - i;
+		return strs[0].substr(index, i);
 	}
-
-	if(common_count == 0)
+	else
+	{
 		return string();
-
-	return strs[0].substr(idx, common_count);
+	}
 }
