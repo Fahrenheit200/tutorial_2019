@@ -6,7 +6,7 @@
 - 摘要：这是方至钰完成的空队考核第一周任务的说明，包括helloworld程序的编译执行过程、程序设计能力练习题——最大公共后缀的说明。
 
 ***
-## helloworld工程
+## helloworld工程的编译和执行
 ### 1. 创建新的源文件：在ubuntu的终端中输入命令`vim helloworld.cpp`
 ### 2. 进入vim并编辑helloworld代码，编辑完后按`esc`，输入`:wq`保存退出
 ### 3. 用g++编译: 
