@@ -1,5 +1,5 @@
 #include <algorithm>
-
+using namespace std;
 string longestCommon(vector<string> &strs){
 	string result = "";
 	string min_str = *min_element(strs.begin(), strs.end(),
