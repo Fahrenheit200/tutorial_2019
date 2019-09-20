@@ -1,19 +1,22 @@
 ## 程序设计能力练习题
 
-- 请使用C++和g++。
-- 开设此题的目的只是想让你熟悉基本的C++和程序设计，多动动脑筋。
-- 只要简单测试Accepted就可以得分，代码简洁可得满分。请独立认真完成。
-- 可能需要先了解的知识：std::string、vector
+- 请用 C++ 编写程序，直接使用 `g++` 编译。
+- 开设此题的目的只是想让你熟悉基本的 C++ 和程序设计，多动动脑筋。
+- 只要简单测试 Accepted 就可以得分，代码简洁可得满分。请独立认真完成。
+- 可能需要先了解的知识：`std::string`、`std::vector`。
 
 
 ## 第二周题目 —— 链表加法
 
 ### Description
+
 编写一个函数实现链表的加法，首先得了解什么是链表这种数据结构
 
 ### Input
+
 编写一个函数，接口如下:
-```
+
+```cpp
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -23,16 +26,16 @@
  * };
  */
 
-ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-
-}
+ListNode* addTwoNumbers(ListNode* l1, ListNode* l2);
 ```
 
 ### Output
+
 A + B链表的结果值
 
 ### Sample Input And Output
-```
+
+```shell
 输入链表是逆序的
 链表A 1->2->3
 链表B 3->4->5
