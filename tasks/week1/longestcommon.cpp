@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <cmath>
 using namespace std;
 string longestCommon( vector<string>);
 int main()
@@ -30,7 +29,7 @@ string longestCommon( vector<string> a)
 		for(int j=i+1;j<n;j++)
 		{
 			int k=0;
-			int len=max(a[i].size(),a[j].size());
+			int len=min(a[i].size(),a[j].size());
 			while(1)
 			{
 				if (k>len) break;//in case invalid visit
