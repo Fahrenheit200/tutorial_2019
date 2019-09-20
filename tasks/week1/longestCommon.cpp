@@ -1,7 +1,6 @@
 #include <vector>
 #include <string>
 #include <algorithm>
-#include <iostream>
 using namespace std;
 string longestCommon(vector<string>& strs){
 	string common="";
@@ -28,15 +27,4 @@ string longestCommon(vector<string>& strs){
 	}
 	reverse(common.begin(),common.end());//返回字符串前要翻转
 	return common;
-}
-
-int main(){
-	int n;
-	cout<<"please input the numbers of strings:";
-	cin>>n;
-	vector<string> str(n);//n个字符串
-	for(int i=0;i<n;i++)
-		cin>>str[i];
-	cout<<"the longest common are:"<<longestCommon(str)<<endl;
-	return 0;
 }
