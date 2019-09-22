@@ -7,6 +7,6 @@ makefile文件用于编译工程
 ## 创建过程
 使用make指令编译通过，生成可执行文件app
 ## 使用方法
-在命令行中打开'tutorial_2019/tasks/week1/programming_exercise/app'，逐行输入字符串
+导入longest.h头文件，即可使用函数longestCommon(vector<string>&)，逐行输入字符串
 使用Ctrl+d输入EOF结束输出，将输出所输入字符串的最大公共后缀
 如无公共字符串，将输出一个空字符
