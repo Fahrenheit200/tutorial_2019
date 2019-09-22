@@ -1,24 +1,4 @@
-#include<iostream>
-#include<string>
-#include<vector>
-#include<algorithm>
-
-using namespace std;
-
-string longestCommon(vector<string>& strs);
-
-int main ()
-{
-    vector<string> strs;
-    string tmp;
-
-    while(cin>>tmp)            //输入
-        strs.push_back(tmp);
-
-
-    cout<<longestCommon(strs);   //程序调用
-
-}
+/*需要algorithm,iostream,vector,string*/
 string longestCommon(vector<string>& strs)
 {
     string an;
@@ -49,4 +29,4 @@ string longestCommon(vector<string>& strs)
     return an;
 
 
-}    
+}
