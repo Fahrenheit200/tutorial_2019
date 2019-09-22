@@ -23,7 +23,6 @@
 #include <vector>
 using namespace std;
 
-
 /** 
 * @brief  find the longest common suffix of some string
 * @param[in]  strs  --   a vector of some strings
@@ -31,30 +30,6 @@ using namespace std;
 * @return the longest common suffix
 */
 string longestCommon(vector<string>& strs);
-
-
-int main(){
-	/* create a empty vector */
-	vector<string> strs;
-	/* the number of strings */
-	int n;
-	
-	/* add some strings into vector */
-	cout << "How many strings do you want to input: ";
-	cin >> n;
-	cout << "Please input " << n << " strings." << endl;
-	for(int i=0; i<n; i++){
-		string str;
-		cin >> str;
-		strs.push_back(str);
-	}
-	
-	/* find and print the longest common suffix of these string */
-	cout << endl << "The result is: " << longestCommon(strs) << endl;
-	
-	return 0;
-}
-
 
 /** 
 * @brief  find the longest common suffix of some string
