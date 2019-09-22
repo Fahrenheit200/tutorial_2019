@@ -33,7 +33,7 @@ string longestCommon(vector<string>& strs){
 		vec.push_back(strs[0][len[0]-j]);
 	}
 	out:;
-	char c[j-1];
+	char c[j-1];//相同的字符串序列长度为j-1
 	for(int i=0;i<j-1;i++){
 		c[j-2-i]=vec[i];
 	}
