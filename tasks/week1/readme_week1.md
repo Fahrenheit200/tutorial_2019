@@ -1,8 +1,7 @@
 # week1 task readme 第一周任务  
 
 ## 一、工作总结
-
-    安装ubuntu18.04系统，安装各种配置，熟练vim等基本操作方法。配置git,熟悉git和GitHub的使用。编写**hello world**工程文件，并使用g++编译器编译。
+安装ubuntu18.04系统，安装各种配置，熟练vim等基本操作方法。配置git,熟悉git和GitHub的使用。编写**hello world**工程文件，并使用g++编译器编译。
 编写程序设计练习第一题，使用g++编译器，测试并修改。安装**OpenCV**库。学习Linux中的man和help命令，尝试使用Hosts,但是未成功。  
 
 ## 二、编程说明  
