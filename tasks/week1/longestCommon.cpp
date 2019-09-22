@@ -1,4 +1,4 @@
-string longestCommon(vector<string> strs){
+string longestCommon(vector<string> &strs){
   if (strs.size() == 0) return "";
   for (int i = 0; i < strs[0],length(); i ++){
 	  char c = strs[0].at(strs[0].length() - 1 - i);
