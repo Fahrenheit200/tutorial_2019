@@ -1,15 +1,4 @@
-#include <iostream>
-#include <string>
-#include <vector>
-using namespace std;
-string longestCommon( vector<string>);
-int main()
-{
-	vector <string> repo;
-        cout<<longestCommon(repo)<<endl;
-	return 0;
 	
-}
 
 string longestCommon( vector<string> a)
 {
