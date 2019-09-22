@@ -1,24 +1,3 @@
-#include<iostream>
-#include<vector>
-#include<string>
-using namespace std;
-string longestCommon(vector<string>& strs);
-
-int main()
-{
-	vector<string> strs;
-	
-	string temp;
-	cout << "请输入要比较的字符串 按ctrl+D输入结束\n";
-	while (cin >> temp)
-	{
-		strs.push_back(temp);
-	}
-	
-	cout << "the longest common postfix is:"<<longestCommon(strs) << endl;;
-
-	return 0;
-}
 
 string longestCommon(vector<string>& strs)
 {
