@@ -1,11 +1,6 @@
 # week1 task readme 第一周任务
-- Author: Liumzh18 刘明正
-- Revised: Liumzh18 刘明正
-- Date: 2019-09-13
-- Version: 1.0.0
-- Abstract: Intrduction of my jobs for this week.
 ##一、工作总结
-    安装ubuntu18.04系统，安装各种配置，熟练vim等基本操作方法。配置git,熟悉git和GitHub的使用。编写*hello world*工程文件，并使用g++编译器编译输出。编写程序设计练习第一题，使用g++编译器，测试并修改。安装**OpenCV**库。学习Linux中的==man==和==help==命令，尝试使用Hosts,但是未成功。
+    安装ubuntu18.04系统，安装各种配置，熟练vim等基本操作方法。配置git,熟悉git和GitHub的使用。编写*hello world*工程文件，并使用g++编译器编译输出。编写程序设计练习第一题，使用g++编译器，测试并修改。安装**OpenCV**库。学习Linux中的man和help命令，尝试使用Hosts,但是未成功。
 ##二、编程说明
 ######hello world 工程
   主要使用
