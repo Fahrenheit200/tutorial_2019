@@ -21,7 +21,8 @@
     int main()
  
    {
-            vector<string> strs;
+   
+            vector <string> strs;
   
             strs.push_back("xhjk");
  
