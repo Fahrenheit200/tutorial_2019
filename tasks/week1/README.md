@@ -1,30 +1,14 @@
-## 基础考核 - 第一周（9.16-9.22）
+## The README Tutorial of 'helloworld.cpp'
 
-必学内容：
+- Auther:林嘉鸿
+- Revised:林嘉鸿
+- Date:2019-09-20
+- Version:1.0.0
+- Abstract:This is a programme that can output 'Hello world' 
 
-- 1、安装Linux操作系统。
-    - 由于参加考核的同学水平参差不齐，我们建议不熟悉Linux系统的同学在虚拟机装系统，而不用双系统，避免损坏你的硬盘。如果对计算机体系和操作系统较熟悉，可以安装双系统。
-    - 对于本次考核，建议安装**Ubuntu 16.04/18.04**版本操作系统。因为考核内容涉及到ROS的使用，ROS对Ubuntu正式支持，兼容性强，因此推荐较新的Ubuntu发行版。
-- 3、学习git，熟悉github的使用。
-- 4、学习g++的使用。[git参考教程](https://git-scm.com/book/zh/v2)
-- 5、学习使用Vim或Emacs。Vim 是一款强大的文本编辑器，我们强烈建议你熟练地掌握Vim（或Emacs），这将有助于你提升编程的效率。
+# How to run
+g++ helloworld.cpp
+./ a.out
 
-选修内容：
-
-- 1、理解Linux中的man或help命令。尽管google也是一种方法，但man或help命令往往最全面，最易获取也是最详细的命令说明。
-- 2、科学上网。你可以使用免费的Hosts，Lantern等（在github上都可以找到），也可以选择付费的翻墙软件。
-
-本周任务：
-
-- 1、在命令行使用vim编辑一个C++程序，然后用g++编译这个C++程序, 输出Hello World。请不要使用任何类型的IDE。
-- 2、使用git把上述整个工程提交到Github上。**在此工程中，请勿提交不重要的中间文件。**（如.o文件和编译的可执行文件。提示：使用.gitignore）
-- 3、完成[程序设计能力练习](https://github.com/SYSU-AERO-SWIFT/tutorial_2019/blob/master/tasks/week1/programming_exercise.md)第一周题目最大公共后缀，同样使用g++编译。  
-- 4、预先安装OpenCV，参考资料可见入门教程。
-
-评分标准：  
-
-| 评分项                                     | 积分值 |
-| ------------------------------------------ | ------ |
-| 在linux编写Hello World工程并且编译执行通过 | 40分   |
-| 将文件上传到自己的github分支上             | 40分   |
-| 完成第一周程序设计题                       | 20分   |
+# The result 
+Hello world
