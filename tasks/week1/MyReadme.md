@@ -21,4 +21,3 @@ cout<<longestCommon(strs)<<endl;
 其中strs为一个容器
 编译运行方式与Hello_world文件类似
 输出与Sample一致，并尝试了其他输入
-

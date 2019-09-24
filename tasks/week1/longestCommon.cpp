@@ -1,3 +1,8 @@
+#include<iostream>
+#include<vector>
+#include<string>
+#include<algorithm>
+using namespace std;
 
 string longestCommon(vector<string>& strs){
 	int len=strs.size(); 
