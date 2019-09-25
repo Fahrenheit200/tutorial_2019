@@ -31,19 +31,17 @@ int main(int argc, char* argv[])
 	{
 		cap >> frame;
 		if (frame.empty()) break;
-		//resize(frame, frame, Size(frame.cols / 6, frame.rows / 6));
+		resize(frame, frame, Size(frame.cols / 6, frame.rows / 6));
 		cvtColor(frame, gray, CV_BGR2GRAY);
 		if (mius.empty())
 		{
-			tmp.create(gray.size(), CV_32FC(2));
 			sigmas.create(gray.size(), CV_32FC3);
 			omigas.create(gray.size(), CV_32FC3);
-			tmp = Scalar(127.5, 127.5);
+			mius.create(gray.size(), CV_32FC3);
+			mius = Scalar(43.5, 127.5, 213);
 			sigmas = Scalar(127.5, 127.5, 127.5);
 			omigas = Scalar(1.0 / 3, 1.0 / 3, 1.0 / 3);
 			gray.convertTo(gray, CV_32F);
-			Mat chs[2] = {gray, tmp};
-			merge(chs, 2, mius);
 		}
 		else
 		{
