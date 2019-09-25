@@ -15,8 +15,9 @@ void imshowv(const char* name, Mat img)
 int main(int argc, char* argv[])
 {
 	VideoCapture cap(argv[1]);
+	std::cout << cap.get(CAP_PROP_FRAME_COUNT) << std::endl;
 	Mat frame, frame_gray, frame_last, frame_diff, frame_diff2, frame_m;
-	float rate = 0.7;
+	float rate = 0.3;
 	while (1)
 	{
 		cap >> frame;
@@ -59,7 +60,7 @@ int main(int argc, char* argv[])
 		if (contours.size() > 0) accumulateWeighted(frame, frame_m, rate, mask);
 		if (rate > 0.2) rate *= 0.9;
 		imshowv("Masked", frame_m);
-		if (contours.size() > 3) waitKey(0);
+		//if (contours.size() > 3) waitKey(0);
 		if (waitKey(33) >= 0) break;
 	}
 
