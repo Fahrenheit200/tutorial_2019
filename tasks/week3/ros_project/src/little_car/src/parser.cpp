@@ -15,34 +15,30 @@ void little_car::set_velocity(SVector3 velocity)
 {
 	this->_velocity.x = velocity.x;
 	this->_velocity.y = velocity.y;
-	this->_velocity.z = velocity.z;
+	this->_velocity.z = 0.0;
 	return;
 }
 void little_car::add_noise()
 {
-	float sigma = _velocity.x + _velocity.y + _velocity.z;
+	float sigma = _noise[_noise_level];
 	double noise[3];
 	std::random_device rd;
 	std::mt19937 gen(rd());
-	std::normal_distribution<double> normal(0,sigma);
+	std::normal_distribution<double> normal(-sigma,sigma);
 	for(int i=0;i<3;i++)
 	{		
 		noise[i] = normal(gen);
 	}
 	odom_trans.header.stamp = ros::Time::now();
-	/*
-	_position.x += noise[0];					//更新小车的位置信息
-	_position.y += noise[1];
-	_position.z += noise[2];
-    odom_trans.transform.translation.x = _position.x;	//小车 x 方向的移动 每次加上velocity.x的距离
-    odom_trans.transform.translation.y = _position.y;
-    odom_trans.transform.translation.z = _position.z;
-	*/
 	_velocity.x += noise[0];
 	_velocity.y += noise[1];
-	_velocity.z += noise[2];
+	_velocity.z  = 0;
 	return;
 
+}
+void little_car::set_noise_level(int level)
+{
+	_noise_level = level;
 }
 void little_car::update_position()
 {
@@ -55,7 +51,7 @@ void little_car::update_position()
     odom_trans.transform.translation.x = _position.x;//小车 x 方向的移动 每次加上velocity.x的距离
     odom_trans.transform.translation.y = _position.y;
     odom_trans.transform.translation.z = _position.z;
-	odom_trans.transform.rotation = tf::createQuaternionMsgFromYaw(0.0);
+	odom_trans.transform.rotation = tf::createQuaternionMsgFromYaw(_yaw);
 	_pub_position.x = _position.x;
 	_pub_position.y = _position.y;
 	_pub_position.z = _position.z;
@@ -81,5 +77,10 @@ void little_car::update_()
 	pos_pub.publish(_pub_position);//发布位置信息到 "car_position" 信息格式为 geometry::msgs::Point
 	joint_pub.publish(joint_state);
 	broadcaster.sendTransform(odom_trans);
+	return;
+}
+void little_car::set_yaw(float yaw)
+{
+	_yaw = yaw;
 	return;
 }
