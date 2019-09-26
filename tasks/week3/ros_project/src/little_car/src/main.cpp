@@ -23,7 +23,7 @@ int main(int argc, char** argv) {
 	 */
     ros::Rate loop_rate(30);
 	SVector3 velocity={0,0.008,0};  //速度向量
-	car.set_noise_level(0);		   //设置噪声等级
+	car.set_noise_level(1);		   //设置噪声等级
 	float yaw = 0.0;
     while (ros::ok()) {
 	//	yaw += 0.01;

@@ -24,7 +24,7 @@ void little_car::add_noise()
 	double noise[3];
 	std::random_device rd;
 	std::mt19937 gen(rd());
-	std::normal_distribution<double> normal(-sigma,sigma);
+	std::normal_distribution<double> normal(0,sigma);
 	for(int i=0;i<3;i++)
 	{		
 		noise[i] = normal(gen);

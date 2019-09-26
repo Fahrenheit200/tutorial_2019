@@ -23,7 +23,7 @@ class little_car
 		tf::TransformBroadcaster broadcaster;
 		sensor_msgs::JointState joint_state;
 		int _noise_level = 0;
-		float _noise[5]={0,0.01,0.03,0.05,0.1};
+		float _noise[5]={0,0.03,0.05,0.05,0.1};
 		geometry_msgs::TransformStamped odom_trans;
 		geometry_msgs::Point _pub_position; //小车位置（用来pub的）
 		/*test*/
