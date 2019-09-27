@@ -9,12 +9,20 @@
 #include <chrono>
 using namespace cv;
 using namespace std;
+float rate = 0.1;
+double prop;
+Mat frame, gray;
+Mat tmp, mius, sigmas, omigas, mask;
+void showPoint(int x, int y);
 void onMouse(int event, int x, int y, int flags, void* userdata)
 {
 	if (event == EVENT_LBUTTONDOWN)
 	{
-		cout << "(" << x << "," << y << ")" << endl;
+		int rx = x / prop + 0.5, ry = y / prop + 0.5;
+		cout << "(" << rx << "," << ry << ")" << endl;
+		showPoint(ry, rx);
 	}
+
 }
 Mat toView(Mat ori)
 {
@@ -22,9 +30,13 @@ Mat toView(Mat ori)
 	resize(ori, res, Size(800, 800 * ori.rows / ori.cols));
 	return res;
 }
-void imshowv(const char* name, Mat img)
+double imshowv(const char* name, Mat img)
 {
+	Mat res;
+	double prop = 800.0 / img.cols;
+	resize(img, res, Size(800, img.rows * prop));
 	imshow(name, toView(img));
+	return prop;
 }
 double gs(int x, double miu, double sigma)
 {
@@ -41,12 +53,17 @@ Mat gsMat(Mat x, Mat miu, Mat sigma)
 	return tmp2.mul(tmp);
 }
 
-float rate = 0.1;
+void showPoint(int x, int y)
+{
+	cout << int(gray.at<uchar>(y, x)) << endl
+	<< mius.at<Vec3f>(y, x) << endl
+	<< sigmas.at<Vec3f>(y, x) << endl
+	<< omigas.at<Vec3f>(y, x) << endl;
+}
 int main(int argc, char* argv[])
 {
 	VideoCapture cap(argv[1]);
-	Mat frame, gray;
-	Mat tmp, mius, sigmas, omigas, mask;
+	
 	auto start = chrono::steady_clock::now();
 	int fcnt = cap.get(CAP_PROP_FRAME_COUNT);
 	rate = 0.1;
@@ -55,16 +72,17 @@ int main(int argc, char* argv[])
 		cap >> frame;
 		if (frame.empty()) break;
 		auto st = chrono::steady_clock::now();
-		if (rate > 0.01) rate *= 0.95;
+		//if (rate > 0.01) rate *= 0.95;
 		cvtColor(frame, gray, CV_BGR2GRAY);
 		if (mius.empty())
 		{
+			prop = 800.0 / frame.cols;
 			sigmas.create(gray.size(), CV_32FC3);
 			omigas.create(gray.size(), CV_32FC3);
 			mius.create(gray.size(), CV_32FC3);
 			mask.create(gray.size(), CV_8U);
 			mius = Scalar(43.5, 127.5, 213);
-			sigmas = Scalar(2, 2, 2);
+			sigmas = Scalar(20, 20, 20);
 			omigas = Scalar(1.0 / 3, 1.0 / 3, 1.0 / 3);
 			mask = 255;
 			gray.convertTo(gray, CV_32F);
@@ -132,7 +150,7 @@ int main(int argc, char* argv[])
 					for (int i = 0; i < 3; i++)
 					{
 						float& o = (*ito)[i];
-						o = (i == bst ? (1 - rate): rate) * o;
+						o = (i == bst ? 1: (1 - rate)) * o;
 						ws += o;
 					}
 					*ito /= ws;
@@ -156,13 +174,14 @@ int main(int argc, char* argv[])
 				}
 				*itm = (*ito)[bst] * 255;
 			}
-
 		}
-		threshold(mask, mask, 0.05 * 255, 255, CV_THRESH_BINARY);
-		medianBlur(mask, mask, 5);
-		dilate(mask, mask, 5);
-		medianBlur(mask, mask, 5);
+		showPoint(889, 469);
+		// threshold(mask, mask, 0.05 * 255, 255, CV_THRESH_BINARY);
+		// medianBlur(mask, mask, 5);
+		// dilate(mask, mask, 5);
+		// medianBlur(mask, mask, 5);
 		imshowv("Mask", mask);
+		imshowv("Gray", gray);
 		auto edd = chrono::steady_clock::now();
 		cout << "Time Consume: " << chrono::duration_cast<chrono::milliseconds>(edd - st).count() / 1000.0 << "s" << endl;
 		if (waitKey(33) != 255) break;
