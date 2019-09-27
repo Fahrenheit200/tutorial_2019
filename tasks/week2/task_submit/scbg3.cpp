@@ -1,3 +1,7 @@
+/*
+ GMM背景建模魔改版
+ 通过非常暴力的降权，在前期将非背景部分模型直接降权到0，有效地快速收敛，但导致前期被长期遮挡的像素成为噪点。
+*/
 #include <opencv2/opencv.hpp>
 #include <cmath>
 #include <iostream>
@@ -53,7 +57,6 @@ int main(int argc, char* argv[])
 		auto st = chrono::steady_clock::now();
 		if (rate > 0.01) rate *= 0.95;
 		cvtColor(frame, gray, CV_BGR2GRAY);
-		// cout << frame.rows() << ' ' << frame.cols() << endl;
 		if (mius.empty())
 		{
 			sigmas.create(gray.size(), CV_32FC3);
@@ -61,7 +64,7 @@ int main(int argc, char* argv[])
 			mius.create(gray.size(), CV_32FC3);
 			mask.create(gray.size(), CV_8U);
 			mius = Scalar(43.5, 127.5, 213);
-			sigmas = Scalar(1, 1, 1);
+			sigmas = Scalar(2, 2, 2);
 			omigas = Scalar(1.0 / 3, 1.0 / 3, 1.0 / 3);
 			mask = 255;
 			gray.convertTo(gray, CV_32F);
@@ -129,8 +132,7 @@ int main(int argc, char* argv[])
 					for (int i = 0; i < 3; i++)
 					{
 						float& o = (*ito)[i];
-						o = (i == bst ? (1 - rate) : rate) * o;
-						//if (o < 1e-15) o = 1e-15;
+						o = (i == bst ? (1 - rate): rate) * o;
 						ws += o;
 					}
 					*ito /= ws;
@@ -152,23 +154,18 @@ int main(int argc, char* argv[])
 						}
 					}
 				}
-				if ((*ito)[bst] < 0.2)
-				{
-					*itm = 0;
-				}
-				else *itm = 255;
+				*itm = (*ito)[bst] * 255;
 			}
 
 		}
-		cout << (int)gray.at<uchar>(220, 462) << endl 
-		<< mius.at<Vec3f>(220, 462) << endl << sigmas.at<Vec3f>(220, 462) << endl
-		<< omigas.at<Vec3f>(220, 462) << endl << endl;
-		//imshowv("Gray", gray);
-		//imshowv("Mask", mask);
+		threshold(mask, mask, 0.05 * 255, 255, CV_THRESH_BINARY);
+		medianBlur(mask, mask, 5);
+		dilate(mask, mask, 5);
+		medianBlur(mask, mask, 5);
+		imshowv("Mask", mask);
 		auto edd = chrono::steady_clock::now();
 		cout << "Time Consume: " << chrono::duration_cast<chrono::milliseconds>(edd - st).count() / 1000.0 << "s" << endl;
-		//waitKey(0);
-		//if (waitKey(33) != 255) break;
+		if (waitKey(33) != 255) break;
 	}
     auto it = mius.begin<Vec3f>();
     auto ita = sigmas.begin<Vec3f>();
