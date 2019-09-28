@@ -1,6 +1,6 @@
 /*
  GMM背景建模魔改版
- 通过非常暴力的降权，在前期将非背景部分模型直接降权到0，有效地快速收敛，但导致前期被长期遮挡的像素成为噪点。
+ 通过获取帧数适当调整学习率以减少长视频的噪点的同时加快短视频的收敛
 */
 #include <opencv2/opencv.hpp>
 #include <cmath>
@@ -12,7 +12,7 @@ using namespace std;
 float rate = 0.1;
 double prop;
 Mat frame, gray;
-Mat tmp, mius, sigmas, omigas, mask;
+Mat tmp, mius, sigmas, omigas, mask, ori;
 void showPoint(int x, int y);
 void onMouse(int event, int x, int y, int flags, void* userdata)
 {
@@ -21,21 +21,16 @@ void onMouse(int event, int x, int y, int flags, void* userdata)
 		int rx = x / prop + 0.5, ry = y / prop + 0.5;
 		cout << "(" << rx << "," << ry << ")" << endl;
 		showPoint(ry, rx);
+		cout << (int)ori.at<uchar>(rx, ry) << endl;
 	}
 
-}
-Mat toView(Mat ori)
-{
-	Mat res;
-	resize(ori, res, Size(800, 800 * ori.rows / ori.cols));
-	return res;
 }
 double imshowv(const char* name, Mat img)
 {
 	Mat res;
 	double prop = 800.0 / img.cols;
 	resize(img, res, Size(800, img.rows * prop));
-	imshow(name, toView(img));
+	imshow(name, res);
 	return prop;
 }
 double gs(int x, double miu, double sigma)
@@ -66,7 +61,7 @@ int main(int argc, char* argv[])
 	
 	auto start = chrono::steady_clock::now();
 	int fcnt = cap.get(CAP_PROP_FRAME_COUNT);
-	rate = 0.1;
+	rate = 8.0 / fcnt;
 	while (1)
 	{
 		cap >> frame;
