@@ -33,19 +33,6 @@
 - using namespace std;
 - using namespace cv;
 
-### 本程序中的Recovery类定义
-class Recovery{   
-        public:    
-                void readVideo(String);   
-                void process();   
-                void showResult();   
-        private:   
-                String filePath;   
-                VideoCapture cap;   
-                Mat result;   
-};
-
-
 ### 编译提示
 $ cd Background_Recovery   
 $ make   
