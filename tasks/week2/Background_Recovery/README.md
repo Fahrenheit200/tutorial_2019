@@ -1,7 +1,7 @@
 ## README of Background Recovery Programme
 - Author:林嘉鸿
 - Revised:林嘉鸿
-- Date:2019-09-29
+- Date:2019-09-28
 - Version:1.0.0
 - Abstract:这篇README说明了如何运行本程序以提取视频文件的背景
 
