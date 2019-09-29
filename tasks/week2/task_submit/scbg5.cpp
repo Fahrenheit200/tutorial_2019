@@ -8,15 +8,39 @@
 #include <iostream>
 #include <vector>
 #include <chrono>
+#include <map>
+#include "recovery/include/timer.h"
 using namespace cv;
 using namespace std;
+Timer timer;
 typedef Vec3f Color;
-float rate = 0.1;
+float rate, mrate;
 double prop;
 Mat frame, gray;
 Mat tmp, mask, ori;
 vector<Mat> mius, sigmas, omigas;
-void showPoint(int x, int y);
+void onMouse(int event, int x, int y, int flags, void* userdata)
+{
+	if (event == EVENT_LBUTTONDOWN)
+	{
+		int rx = x / prop, ry = y / prop;
+		cout << "(" << rx << "," << ry << ")" << endl;
+	}
+}
+void showPoint(int x, int y)
+{
+	int px = x * prop, py = y * prop;
+	circle(frame, Point2i(px, py), 8, Scalar(255, 255, 255), 1);
+	cout << endl;
+	cout << "Color: " << frame.at<Vec3b>(y, x) << endl;
+	for (int i = 0; i < 3; i++)
+	{
+		cout << "Miu" << char('1' + i) << ": " << mius[i].at<Vec3f>(y, x) << endl
+		<< "Sigma" << char('1' + i) << ": " << sigmas[i].at<float>(y, x) << endl
+		<< "Omiga" << char('1' + i) << ": " << omigas[i].at<float>(y, x) << endl;
+	}
+	cout << endl;
+}
 double imshowv(const char* name, Mat img)
 {
 	Mat res;
@@ -25,28 +49,43 @@ double imshowv(const char* name, Mat img)
 	imshow(name, res);
 	return prop;
 }
-double gsVec(const Vec3b& x, Vec3f miu, float sga)
+float marDis(Vec3b x, Vec3f miu, float sga)
 {
-	static double c1 = 1 / pow(2 * M_PI, 1.5);
-	float detb = 1 / (sga * sga * sga);
 	Vec3f diff = Vec3f(x) - miu;
 	Matx33f binv(1 / sga, 0, 0, 0, 1 / sga, 0, 0, 0, 1 / sga);
-	float tmp1 = (diff.t() * binv * diff)[0];
-	float tmp2 = exp(-0.5 * tmp1);
-	double res = c1 * detb * tmp2;
+	return (diff.t() * binv * diff)[0];
+}
+inline double gsVec(const Vec3b& x, Vec3f miu, float sga)
+{
+	Vec3f diff = Vec3f(x) - miu; 
+	float tmp2 = exp(-0.5 * (diff[0] * diff[0] + diff[1] * diff[1] + diff[2] * diff[2]));
+	double res = 1 / pow(2 * M_PI, 1.5) * 1 / (sga * sga * sga) * tmp2;
 	return res;
+}
+Mat gsMat(Mat x, Mat miu, Mat sga)
+{
+	Mat diff, tmp2;
+	absdiff(x, miu, diff);
+	exp(-0.5 * diff.mul(diff), tmp2);
+	Mat detb = sga.mul(sga); detb = detb.mul(sga);
+	return tmp2 / detb;
 }
 int main(int argc, char* argv[])
 {
 	VideoCapture cap(argv[1]);
 	
 	auto start = chrono::steady_clock::now();
-	int fcnt = cap.get(CAP_PROP_FRAME_COUNT);
-	rate = 8.0 / fcnt;
+	int fcnt = cap.get(CAP_PROP_FRAME_COUNT), fid = 0;
+	rate = 0.4;
+	if (fcnt <= 150) mrate = 1;
+	else mrate = 0.98;
 	while (1)
 	{
 		cap >> frame;
 		if (frame.empty()) break;
+		if (rate > 0.04) rate *= mrate;
+		fid++;
+		// pyrDown(frame, frame); pyrDown(frame, frame);
 		auto st = chrono::steady_clock::now();
 		if (mius.empty()) //Initialize
 		{
@@ -54,17 +93,17 @@ int main(int argc, char* argv[])
 			{
 				mius.push_back(Mat(frame.size(), CV_32FC3));
 				sigmas.push_back(Mat(frame.size(), CV_32F));
-				sigmas[i] = 20;
+				sigmas[i] = 8;
 				omigas.push_back(Mat(frame.size(), CV_32F));
 				omigas[i] = 1.0 / 3;
 			}
-			mius[0] = Scalar::all(43.5); mius[1] = Scalar::all(127.5); mius[2] = Scalar::all(213);
+			mius[0] = Scalar::all(128); mius[1] = Scalar::all(128); mius[2] = Scalar::all(128);
 			mask.create(frame.size(), CV_8U);
 			mask = 255;
 		}
-		else
+		else if (fid <= 100)
 		{
-			mask = 255;
+			
 			auto it = frame.begin<Vec3b>();
 			vector<MatIterator_<Vec3f>> itus; //a[n][p]
 			vector<MatIterator_<float>> itos, itas;
@@ -76,28 +115,27 @@ int main(int argc, char* argv[])
 			}
 			auto itm = mask.begin<uchar>();
 			auto ited = frame.end<Vec3b>();
-			for (;it != ited; it++, itm++) // for each pixel
+			
+			
+			for (;it != ited; it++) // for each pixel
 			{
+
 				int bst = -1; double bstp = -1e8, p;
 				for (int i = 0; i < 3; i++) //for each model
 				{
-					Vec3f diff; absdiff(*it, *itus[i], diff); bool ok = true;
-					for (int j = 0; j < 3; j++) // for each component
+					
+					Vec3f x = *it, miu = *itus[i]; float sigma = *itas[i];
+					Vec3f diff; absdiff(x, miu, diff); bool ok = true;
+					if (diff[0] > 2.5 * sigma || diff[1] > 2.5 * sigma || diff[2] > 2.5 * sigma) continue;
+					p = gsVec(x, miu, sigma);
+					if (p  > bstp)
 					{
-						if (isnan(*itas[i]) || isinf(*itas[i])) cout << "ahaha" << endl;
-						if (diff[j] > *itas[i] * 2.5) { ok = false; break; }
+						bst = i;
+						bstp = p;
 					}
-					if (!ok) continue;
-					else
-					{
-						p = gsVec(*it, *itus[i], *itas[i]);
-						if (p  > bstp)
-						{
-							bst = i;
-							bstp = p;
-						}
-					}
+
 				}
+				
 				if (bst == -1) //no matched model
 				{
 					int wrs = -1; float wrso = 1e5;
@@ -150,6 +188,7 @@ int main(int argc, char* argv[])
 					float sq = (diff.t() * diff)[0];
 					*itas[bst] = sqrt(*itas[bst] * *itas[bst] * (1 - rou) + rou * sq);
 				}
+				
 				for (int i = 0; i < 3; i++)
 				{
 					itus[i]++; itas[i]++; itos[i]++;
@@ -157,11 +196,58 @@ int main(int argc, char* argv[])
 				// MOVE ITERATORS!!!
 			}
 		}
-		//imshowv("Video View", frame);
+		else
+		{
+			break;
+			// mask = 255;
+			// auto it = frame.begin<Vec3b>();
+			// vector<MatIterator_<Vec3f>> itus; //a[n][p]
+			// vector<MatIterator_<float>> itos, itas;
+			// for (int i = 0; i < 3; i++)
+			// {
+			// 	itus.push_back(mius[i].begin<Vec3f>());
+			// 	itas.push_back(sigmas[i].begin<float>());
+			// 	itos.push_back(omigas[i].begin<float>());
+			// }
+			// auto itm = mask.begin<uchar>();
+			// auto ited = frame.end<Vec3b>();
+			// for (;it != ited; it++, itm++) // for each pixel
+			// {
+			// 	int bst = -1; double bstp = -1e10, dist;
+			// 	for (int i = 0; i < 3; i++) //for each model
+			// 	{
+			// 		if (marDis(*it, *itus[i], *itas[i]) > 200) continue;
+			// 		dist = gsVec(*it, *itus[i], *itas[i]);
+			// 		if (dist  > bstp)
+			// 		{
+			// 			bst = i;
+			// 			bstp = dist;
+			// 		}
+			// 	}
+			// 	if (bst == -1 || *itos[bst] < 0.7) *itm = 0;
+			// 	for (int i = 0; i < 3; i++)
+			// 	{
+			// 		itus[i]++; itas[i]++; itos[i]++;
+			// 	}
+			// }
+			// dilate(mask, mask, 10);
+			// dilate(mask, mask, 10);
+			// imshowv("Mask", mask);
+		}
+		for (int i = 0; i < 3; i++)
+		{
+			char s[] = "Model1"; s[5] += i;
+			prop = imshowv(s, omigas[i]);
+			s[5] -= i;
+		}
+		// showPoint(440, 212);
+		// imshowv("Video View", frame);
 		auto edd = chrono::steady_clock::now();
 		cout << "Time Consume: " << chrono::duration_cast<chrono::milliseconds>(edd - st).count() / 1000.0 << "s" << endl;
 		if (waitKey(33) != 255) break;
 	}
+	auto ed = chrono::steady_clock::now();
+	cout << "Time Consume: " << chrono::duration_cast<chrono::milliseconds>(ed - start).count() / 1000.0 << "s" << endl;
 	Mat res(mask.size(), CV_8UC3);
 	vector<MatIterator_<Vec3f>> itus; //a[n][p]
 	vector<MatIterator_<float>> itos, itas;
@@ -200,9 +286,8 @@ int main(int argc, char* argv[])
 			itus[i]++; itas[i]++; itos[i]++;
 		}
 	}
-	auto ed = chrono::steady_clock::now();
-	cout << "Time Consume: " << chrono::duration_cast<chrono::milliseconds>(ed - start).count() / 1000.0 << "s" << endl;
 	namedWindow("Result");
+	setMouseCallback("Result", onMouse);
 	imwrite("bg.jpg", res);
 	imshowv("Result", res);
 	waitKey(0);

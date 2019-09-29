@@ -1,3 +1,6 @@
+/*
+ median method
+ */
 #include <opencv2/opencv.hpp>
 #include <cmath>
 #include <iostream>
@@ -7,15 +10,22 @@
 using namespace cv;
 using namespace std;
 typedef Vec<uchar, 5> Vec5u;
+Mat frame, gray, last, diff, mask, bgs, bg, bgtmp;
 void onMouse(int event, int x, int y, int flags, void* userdata)
 {
 	if (event == EVENT_LBUTTONDOWN)
 	{
-		cout << "(" << x * 4 << "," << y * 4 << ")" << endl;
+		float prop = 800.0 / gray.cols;
+		cout << "(" << int(x / prop + 0.5) << "," << int(y / prop + 0.5) << ")" << endl;
 	}
 }
-
-inline void insert(Vec5u& v, int ed)
+void showPoint(int x, int y)
+{
+	float prop = 800.0 / gray.cols;
+	int px = x * prop, py = y * prop;
+	circle(gray, Point2i(px, py), 8, Scalar(255, 255, 255), 1);
+}
+inline void insert(Vec<uchar, 6>& v, int ed)
 {
 	uchar k = v[ed];
 	int i = ed;
@@ -25,9 +35,9 @@ inline void insert(Vec5u& v, int ed)
 	}
 	v[i] = k;
 }
-uchar getMid(const Vec5u& vec)
+uchar getMid(const Vec<uchar, 6>& vec)
 {
-	Vec5u v = vec;
+	Vec<uchar, 6> v = vec;
 	for (int i = 1; i <= 4; i++) insert(v, i);
 	return v[2];
 }
@@ -42,12 +52,23 @@ void imshowv(const char* name, Mat img)
 {
 	imshow(name, toView(img));
 }
-float rate = 0.1;
+float rate;
+Mat avg, avgdiff;
+struct PM
+{
+	Vec3f x;
+	Vec3f mius[3];
+	float sigs[3];
+	float omis[3];
+	PM(){ x = 2;for (int i = 0; i < 3; i++) {mius[i] = 0; sigs[i] = 1; omis[i] = 1.0 / 3;}}
+};
+Mat_<PM> m;
 int main(int argc, char* argv[])
 {
 	VideoCapture cap(argv[1]);
-	Mat frame, gray, last, diff, mask, bgs, bg;
 	vector<Mat> imgs;
+	int fcnt = cap.get(CAP_PROP_FRAME_COUNT);
+	rate = 8.0 / fcnt;
 	for (int i = 1; i <= 5; i++)
 	{
 		cap >> frame;
@@ -55,28 +76,45 @@ int main(int argc, char* argv[])
 		imgs.push_back(gray.clone());
 	}
 	namedWindow("Gray");
-	setMouseCallback("Gray", onMouse);
 	while (1)
 	{
 		cap >> frame;
 		if (frame.empty()) break;
+		if (bgtmp.empty())
+		{
+			bgtmp.create(gray.size(), gray.type());
+			avg.create(gray.size(), CV_32F);
+			avg = 0;
+			m.create(gray.size());
+			cout << m(1, 1).x[1] << endl;
+			m(1, 1).x[2] = 3;
+			cout << m(1, 1).x[2] << endl;
+		}
 		cvtColor(frame, gray, CV_BGR2GRAY);
-		if (bg.empty()) bg.create(gray.size(), gray.type());
 		imgs.push_back(gray.clone());
 		imgs.erase(imgs.begin());
+		imgs.push_back(Mat(gray.size(), gray.type()));
 		merge(imgs, bgs);
-		auto itbg = bg.begin<uchar>();
-		for (auto it = bgs.begin<Vec5u>(); it != bgs.end<Vec5u>(); it++, itbg++)
-		{
-			uchar mid = getMid(*it);
-			*itbg = (uchar)(*itbg * 0.9 + 0.1 * mid);
-		}
+		bgs.forEach<Vec<uchar, 6>>([](Vec<uchar, 6>& item, const int position[]) -> void{
+			item[5] = getMid(item);
+		});
+		split(bgs, imgs);
+		imgs[5].copyTo(bgtmp);
+		imgs.pop_back();
+		if (bg.empty()) bg = bgtmp.clone();
+		else addWeighted(bg, (1 - rate), bgtmp, rate, 0, bg);
+		// bgtmp.convertTo(bgtmp, CV_32F);
+		// avg += bgtmp;
+		showPoint(1655, 2325);
 		imshowv("Gray", gray);
 		imshowv("Res", bg);
+		imshowv("Median", bgtmp);
 		if (waitKey(33) != 255) break;
 	}
+	setMouseCallback("Median", onMouse);
 	imshowv("Res", bg);
-	imwrite("bg.jpg", bg);
+	// imshowv("Res2", avg / (fcnt * 255.0));
+	imwrite("bg_gray.jpg", bg);
 	waitKey(0);
 	return 0;
 }

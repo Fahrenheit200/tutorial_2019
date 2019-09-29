@@ -9,7 +9,7 @@ struct ListNode
 };
 ListNode* addTwoNumbers(ListNode* l1, ListNode* l2)
 {
-	ListNode* res = new ListNode(0), l;
+	ListNode* res = new ListNode(0), *l;
 	ListNode* ans = res;
 	int jin = 0, val = 0;
 	while (l1 != NULL && l2 != NULL)
@@ -34,11 +34,7 @@ ListNode* addTwoNumbers(ListNode* l1, ListNode* l2)
 			res = res->next;
 			l = l->next;
 		}
-		if (jin)
-		{
-			res->val = jin;
-		}
-		else delete res;
 	}
+	res->val = jin;
 	return ans;
 }
