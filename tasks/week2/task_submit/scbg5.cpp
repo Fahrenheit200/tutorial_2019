@@ -101,7 +101,7 @@ int main(int argc, char* argv[])
 			mask.create(frame.size(), CV_8U);
 			mask = 255;
 		}
-		else if (fid <= 100)
+		else if (fid <= 150)
 		{
 			
 			auto it = frame.begin<Vec3b>();

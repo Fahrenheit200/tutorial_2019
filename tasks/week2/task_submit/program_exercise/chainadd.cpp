@@ -9,16 +9,15 @@ struct ListNode
 };
 ListNode* addTwoNumbers(ListNode* l1, ListNode* l2)
 {
-	ListNode* res = new ListNode(0), *l;
-	ListNode* ans = res;
+	ListNode* head = new ListNode(0);
+	ListNode* res = head, *l;
 	int jin = 0, val = 0;
 	while (l1 != NULL && l2 != NULL)
 	{
 		val = l1->val + l2->val + jin;
 		jin = val / 10;
 		val = val % 10;
-		res->val = val;
-		res->next = new ListNode(0);
+		res->next = new ListNode(val);
 		res = res->next;
 		l1 = l1->next;
 		l2 = l2->next;
@@ -28,13 +27,14 @@ ListNode* addTwoNumbers(ListNode* l1, ListNode* l2)
 		l = l1 ? l1 : l2;
 		while (l)
 		{
-			res->val = (l->val + jin) % 10;
-			jin = (l->val + jin) / 10;
-			res->next = new ListNode(0);
+			int val = l->val + jin;
+			res->next = new ListNode(val % 10);
+			jin = val / 10;
 			res = res->next;
 			l = l->next;
 		}
 	}
-	res->val = jin;
-	return ans;
+	if (jin) res->next = new ListNode(jin);
+	ListNode* p = head; head = head->next; delete p;
+	return head;
 }
