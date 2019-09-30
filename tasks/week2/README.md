@@ -1,32 +1,32 @@
-## 基础考核 - 第二周（9.23-9.29）
+## 基础考核 - 第二周（9.23-9.30）
 
-必学内容：
+版本信息：
+- Author: 林涛
+- Revised: 林涛
+- Date: 2019-9-30
+- Version: v-2.0.0
+- Abstract: 已完成本周所有任务。
 
-- 1、入门OpenCV。
-- 2、使用makefile。
-- 3、掌握基本的markdown语法。
 
-选修内容：
+背景恢复：
+- 1、程序：Recovery.cpp Recovery.hpp
+- 2、接口：库调用
+- 3、依赖包：opencv、boost
+- 4、语言：C++
+- 5、编译方法：makefile
+- 6、测试：完美还原三个视频的背景。笔记本七代I5标压双系统下，还原时间：video0约3.5s，video1约2.5s，video2约20s。
 
-- 1、多旋翼无人机飞行操控。（队伍会提供[DJI Flight Simulator](https://www.dji.com/cn/simulator)飞行模拟器，如果你在学校有空余时间，可以来实验室的模拟器上练习。训练飞行器操控技巧的一个重要目的在于：避免损失贵重的无人机。无人机在调试或实际飞行时可能遇到意外情况或者失控，如果没有良好的飞行器操控技巧我们不会冒险让你使用无人机。）
-- 2、习惯阅读英文文档以及官方Document。
+背景恢复方法说明：
+- 1、首先遍历整个视频的每一帧，取像素平均值求得一副粗略还原的图像作为参考。
+- 2、将该平均值的图像切割成左半边和右半边样本。并在中间切割一个宽度为80像素的中心样本。
+- 3、将当前帧的中心样本与平均值的中心样本比较。若遮挡物在中间，舍弃该帧。
+- 4、若遮挡物不在中间，判断遮挡物在左或右，而另外一边则为背景。
+- 5、两边背景都获取后，拼接，则为最后的还原背景。
 
-本周任务：
-- 1、编写一个**多文件**的C++程序，用OpenCV写一个视频背景还原器。具体要求请阅读[详细说明](https://github.com/SYSU-AERO-SWIFT/tutorial_2019/blob/master/tasks/week2/background_recovery.md)。并阅读[《中大空中机器人团队代码规范》](https://github.com/SYSU-AERO-SWIFT/tutorial_2019/wiki/%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C%E8%A7%84%E8%8C%83) ，按照相应规范编写该程序。
-- 2、为上述工程写一个makefile文件并编译运行通过。
-- 3、用git上传到Github上，并使用markdown按照《团队代码规范》写一份说明文档`README.md`。
-- 4、完成[程序设计能力练习](https://github.com/SYSU-AERO-SWIFT/tutorial_2019/blob/master/tasks/week2/programming_exercise.md)第二周题目链表加法，使用g++编译。  
-- 5、 完成[Shell练习题](https://github.com/SYSU-AERO-SWIFT/tutorial_2019/blob/master/shell_exercise.md)。可参考[菜鸟教程](http://www.runoob.com/linux/linux-shell.html)，掌握基础命令即可。
-
-评分标准：  
-
-| 评分项               | 积分值                      |
-| ----------------    | -------------------------- |
-| 成功还原 video0.mp4 背景图                  | 30分        |
-| 成功还原 video1.mp4 背景图                  | 20分        |
-| 成功还原 video2.mp4 背景图                  | 50分        |
-| 输出程序运行计时                  | 5分        |
-| 程序还原时间均在限时内 | 10分|
-| 使用 makefile 成功编译运行       | 10分              |
-| 编写说明文档       | 10分              |
-| 完成第二周程序设计题 | 15分              |
+程序设计：
+- 1、程序：List.cpp
+- 2、接口：ListNode* addTwoNumbers(ListNode* l1, ListNode* l2)
+- 3、依赖包：无特别依赖
+- 4、语言：C++
+- 5、编译方法：g++
+- 6、测试：使用单向链表实现了99999+999等所有复杂进位加法
