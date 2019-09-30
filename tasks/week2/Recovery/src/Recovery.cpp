@@ -16,7 +16,6 @@ void Recovery::process() {
 
 	Mat bkg(n_rows, n_cols / 3, CV_8UC3);
 
-	cout<<n_rows<<"\n"<<n_cols<<endl;
 	uchar*** ibkg = new uchar** [n_rows];
 	for (int i = 0; i < n_rows; i++) {
                 ibkg[i] = new uchar* [n_cols];
