@@ -1,4 +1,6 @@
-#pragma once
+#ifndef _RECOVERY_H_
+#define _RECOVERY_H_
+#endif
 #include<string>
 #include <opencv2/highgui/highgui.hpp> 
 #include <opencv2/imgproc/imgproc.hpp>
