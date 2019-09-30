@@ -1,0 +1,3 @@
+/home/showtime/tutorial_2019/tasks/week2/Fruit/inc/CMakeFiles/rebuild_cache.dir
+/home/showtime/tutorial_2019/tasks/week2/Fruit/inc/CMakeFiles/edit_cache.dir
+/home/showtime/tutorial_2019/tasks/week2/Fruit/inc/CMakeFiles/inc.dir

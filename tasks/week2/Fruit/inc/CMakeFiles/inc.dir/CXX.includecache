@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/showtime/tutorial_2019/tasks/week2/Fruit/inc/Recovery1.cpp
+opencv2/opencv.hpp
+/home/showtime/tutorial_2019/tasks/week2/Fruit/inc/opencv2/opencv.hpp
+opencv2/core/core.hpp
+-
+opencv2/highgui/highgui.hpp
+-
+Recovery1.h
+/home/showtime/tutorial_2019/tasks/week2/Fruit/inc/Recovery1.h
+
+/home/showtime/tutorial_2019/tasks/week2/Fruit/inc/Recovery1.h
+iostream
+-
+stdlib.h
+-
+algorithm
+-
+vector
+-
+string
+-
+opencv2/opencv.hpp
+/home/showtime/tutorial_2019/tasks/week2/Fruit/inc/opencv2/opencv.hpp
+opencv2/core/core.hpp
+-
+opencv2/highgui/highgui.hpp
+-
+
