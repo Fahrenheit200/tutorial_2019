@@ -200,7 +200,6 @@ void Recovery::process()
 				moveIterators();
 
 			}
-			std::cout << fid << ' ' << "OK" << std::endl;
 		}
 		else break;
 	}
