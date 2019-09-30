@@ -27,7 +27,7 @@ int main(int argc, char** argv) {
 	float yaw = 0.0;
     while (ros::ok()) {
 	//	yaw += 0.01;
-	//	car.set_yaw(yaw);
+	//	car.set_yaw(yaw); 		   //修改小车的方向
 		car.set_velocity(velocity);//设置小车速度
         car.update_();//小车状态更新
 		loop_rate.sleep();

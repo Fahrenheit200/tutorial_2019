@@ -42,16 +42,16 @@ void little_car::set_noise_level(int level)
 }
 void little_car::update_position()
 {
-	odom_trans.header.frame_id = "odom";
-	odom_trans.child_frame_id = "base_link";
+	odom_trans.header.frame_id = "odom";		//坐标变换的父坐标系
+	odom_trans.child_frame_id = "base_link";	//子坐标系
     odom_trans.header.stamp = ros::Time::now();
 	_position.x += _velocity.x;	
 	_position.y += _velocity.y;	
 	_position.z += _velocity.z;	
-    odom_trans.transform.translation.x = _position.x;//小车 x 方向的移动 每次加上velocity.x的距离
+    odom_trans.transform.translation.x = _position.x;//小车 x 方向的位置设置
     odom_trans.transform.translation.y = _position.y;
     odom_trans.transform.translation.z = _position.z;
-	odom_trans.transform.rotation = tf::createQuaternionMsgFromYaw(_yaw);
+	odom_trans.transform.rotation = tf::createQuaternionMsgFromYaw(_yaw);//小车方向的改变
 	_pub_position.x = _position.x;
 	_pub_position.y = _position.y;
 	_pub_position.z = _position.z;
@@ -76,7 +76,7 @@ void little_car::update_()
 	update_position();//更新位置信息
 	pos_pub.publish(_pub_position);//发布位置信息到 "car_position" 信息格式为 geometry::msgs::Point
 	joint_pub.publish(joint_state);
-	broadcaster.sendTransform(odom_trans);
+	broadcaster.sendTransform(odom_trans);//坐标变换广播
 	return;
 }
 void little_car::set_yaw(float yaw)
