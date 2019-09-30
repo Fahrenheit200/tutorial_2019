@@ -1,8 +1,20 @@
+/*****************************************************************************
+* 
+*  @file	Recovery.cpp
+*  @brief	Recovery类实现
+* 
+*  @author	PumpkinJimmy
+*  @email	996344439@qq.com
+*  @version	v1.0.0
+*  @date	2019-09-30
+* 
+*****************************************************************************/
 #include <iostream>
 #include <chrono>
 #include <opencv2/opencv.hpp>
 #include "Recovery.h"
 using namespace cv;
+
 double Recovery::gsVec(const Vec3b& x, Vec3f miu, float sga)
 {
 	Vec3f diff = Vec3f(x) - miu; 
@@ -10,10 +22,12 @@ double Recovery::gsVec(const Vec3b& x, Vec3f miu, float sga)
 	double res = 1 / pow(2 * M_PI, 1.5) * 1 / (sga * sga * sga) * tmp2;
 	return res;
 }
+
 void Recovery::startClock()
 {
 	start_tp = std::chrono::steady_clock::now();
 }
+
 float Recovery::endClock()
 {
 	using namespace std::chrono;
@@ -34,6 +48,7 @@ void Recovery::init()
 	mius[0] = Scalar::all(128); mius[1] = Scalar::all(128); mius[2] = Scalar::all(128);
 	result.create(frame.size(), frame.type());
 }
+
 void Recovery::initIterators()
 {
 	itus.clear(); itas.clear(); itos.clear();
@@ -44,6 +59,7 @@ void Recovery::initIterators()
 		itos.push_back(omigas[i].begin<float>());
 	}
 }
+
 void Recovery::moveIterators()
 {
 	for (int i = 0; i < 3; i++)
@@ -70,6 +86,7 @@ int Recovery::getMatchModel(MatIterator_<Vec3b> it)
 	}
 	return bst;
 }
+
 void Recovery::resetModel(MatIterator_<Vec3b> it)
 {
 	int wrs = -1; float wrso = 1e5;
@@ -102,6 +119,7 @@ void Recovery::resetModel(MatIterator_<Vec3b> it)
 	float osum = *itos[0] + *itos[1] + *itos[2];
 	*itos[0] /= osum; *itos[1] /= osum; *itos[2] /= osum;
 }
+
 void Recovery::updateModel(MatIterator_<Vec3b> it, int bst)
 {
 	float ws = 0;
@@ -121,6 +139,7 @@ void Recovery::updateModel(MatIterator_<Vec3b> it, int bst)
 	float sq = (diff.t() * diff)[0];
 	*itas[bst] = sqrt(*itas[bst] * *itas[bst] * (1 - rou) + rou * sq);
 }
+
 int Recovery::getBestModel()
 {
 	int bst = -1; float bstv = -1e8, v;
@@ -204,6 +223,7 @@ void Recovery::saveResult()
 {
 	imwrite("result/result.jpg", result);
 }
+
 void Recovery::showResult()
 {
 	imshow("Result", result);
