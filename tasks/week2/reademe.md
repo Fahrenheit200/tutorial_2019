@@ -19,7 +19,7 @@
      
      makefile
      
-     make即可
+    直接在week2/下 make即可
 
 ###  listnode
     源文件在week2/目录下
