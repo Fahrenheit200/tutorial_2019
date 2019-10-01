@@ -8,14 +8,14 @@
      使用opencv还原背景；实现链表加法。
 ### 接口：
 #### opencv 还原背景
-/// *读入视频，参数为视频固定路径*
+/// *读入视频，参数为视频固定路径*  
 `void readVideo(string filePath)`
-/// *处理视频*
+/// *处理视频*  
 `void process()`
-/// *显示结果*
+/// *显示结果*  
 `void showResult`
 #### 链表加法
-/// *两个链表分别代表一个整数，现实现两个链表的相加*
+/// *两个链表分别代表一个整数，现实现两个链表的相加*  
 `ListNode* addTwoNumbers(LisNode* l1, ListNode* l2)`
 ### 依赖库：
 - 依赖opencv
