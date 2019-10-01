@@ -20,7 +20,7 @@
 ### 依赖库：
 - 依赖opencv
 
-###编译提示
+### 编译提示
 ```
 $cd recovery
 $make
