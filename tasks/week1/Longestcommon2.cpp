@@ -64,7 +64,7 @@ string longestCommon(vector<string>& strs)
 		{
 			x = i - 1;
 			string ter;
-		cout << "请输入需要找出公共后缀的字母…范围a-z,停止请回车" << endl;			getline(cin, ter);
+		cout << "请输入需要找出公共后缀的字母…范围为a-z,停止请回车" << endl;			getline(cin, ter);
 			if (ter.empty())break;
 			let.push_back(ter);
 		}
