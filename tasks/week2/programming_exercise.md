@@ -31,7 +31,7 @@ ListNode* addTwoNumbers(ListNode* l1, ListNode* l2);
 
 ### Output
 
-A + B链表的结果值
+A + B 链表的结果值
 
 ### Sample Input And Output
 
