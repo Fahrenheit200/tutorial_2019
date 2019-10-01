@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.10)
+project(Recovery)
+include_directories(include)
+FILE(GLOB_RECURSE CURRENT_INCLUDE include/Recovery.h)
+find_package(OpenCV 3.4.2 REQUIRED)
+FILE(GLOB_RECURSE CURRENT_SOURCES src/main.cpp Recovery.cpp)
+add_executable(Recovery ${CURRENT_SOURCES} ${CURRENT_INCLUDE}) 
+target_link_libraries(Recovery ${OpenCV_LIBS})
