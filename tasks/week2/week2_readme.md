@@ -9,9 +9,9 @@
 ### 接口：
 #### opencv 还原背景
 /// *读入视频，参数为视频固定路径*  
-`void readVideo(string filePath)`
+`void readVideo(string filePath)`  
 /// *处理视频*  
-`void process()`
+`void process()`  
 /// *显示结果*  
 `void showResult`
 #### 链表加法
