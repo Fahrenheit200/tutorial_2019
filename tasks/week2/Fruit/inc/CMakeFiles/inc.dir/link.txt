@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/inc.dir/Recovery1.cpp.o  -o inc 
