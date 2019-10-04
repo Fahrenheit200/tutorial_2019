@@ -12,8 +12,11 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
+  dynamic_reconfigure
 )
-
+generate_dynamic_reconfigure_options(
+	cfg/rng_params.cfg
+	)
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
 
@@ -138,7 +141,7 @@ include_directories(
 add_executable(RNGServer src/service.cpp)
 target_link_libraries(RNGServer ${catkin_LIBRARIES})
 add_dependencies(RNGServer rng_gencpp)
-
+add_dependencies(RNGServer rng_gencfg)
 add_executable(RNGClient src/client.cpp)
 target_link_libraries(RNGClient ${catkin_LIBRARIES})
 add_dependencies(RNGClient rng_gencpp)
