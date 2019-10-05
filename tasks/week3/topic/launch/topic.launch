@@ -1,0 +1,6 @@
+<launch>
+    <node pkg="topic" type="Publisher" name="Publisher" />
+    <node pkg="topic" type="Subscriber" name="Subscriber" launch-prefix="xterm -e">
+    </node>
+
+</launch>
