@@ -1,0 +1,6 @@
+<launch>
+    <node name="server" pkg="srv_cli"  type="server"/>
+    <node name="client" pkg="srv_cli"  type="client" output="screen"/>
+    <node name="dynamic_param_server" pkg="srv_cli"  type="dynamic_param_server" output="screen"/>
+    <node name="rqt_reconfigure" pkg="rqt_reconfigure"  type="rqt_reconfigure"/>
+</launch>
