@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<launch>
+	<node name = "custom_msg_publisher" pkg = "custom_msg_topic" type = "custom_msg_publisher" output="screen"/>
+	<node name = "custom_msg_subscriber" pkg = "custom_msg_topic" type ="custom_msg_subscriber" output="screen"/>
+</launch>
