@@ -1,0 +1,5 @@
+<launch>
+	<node name="service" pkg="week3msg" type="service"/>
+	<node name="client" pkg="week3msg" type="client" output="screen"/>
+	<node name="server" pkg="week3msg" type="server" output="screen"/>
+</launch>
