@@ -1,0 +1,4 @@
+<launch>
+    <node name="dynamic_node" pkg="dynamic_test" type="server_node" output="screen">
+    </node>
+</launch>

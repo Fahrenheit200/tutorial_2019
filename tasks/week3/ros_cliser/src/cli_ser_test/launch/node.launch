@@ -1,0 +1,4 @@
+<launch>
+    <node name="cli_node" pkg="cli_ser_test" type="cli" output="screen"/>
+    <node name="ser_node" pkg="cli_ser_test" type="ser" output="screen"/>
+</launch>
