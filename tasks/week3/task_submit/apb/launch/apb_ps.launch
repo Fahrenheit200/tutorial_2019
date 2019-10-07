@@ -1,0 +1,4 @@
+<launch>
+	<node pkg="apb" name="APBPublisher" type="APBPublisher" />
+	<node pkg="apb" name="APBSubscriber" type="APBSubscriber" />
+</launch>
