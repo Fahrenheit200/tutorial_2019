@@ -1,0 +1,7 @@
+<launch>
+	<arg name="model"/>
+	<arg name="gui" default="False"/>
+	<param name="little car" textfile="$(find little_car)/urdf/little_car.urdf"/>
+	<param name="use_gui" value="$(arg gui)"/>
+	<node name="vel_cmd pkg="little_car" type="vel_cmd"/>
+</launch>
