@@ -20,10 +20,10 @@ class little_car
 		SVector3 _velocity;	 //小车速度
 		SVector3 _position;  //小车位置
 		float _yaw = 0.0;	 //小车的偏航角
-		tf::TransformBroadcaster broadcaster;
+		tf::TransformBroadcaster broadcaster;//坐标变换广播
 		sensor_msgs::JointState joint_state;
 		int _noise_level = 0;
-		float _noise[5]={0,0.03,0.05,0.05,0.1};
+		float _noise[5]={0,0.02,0.04,0.05,0.1};
 		geometry_msgs::TransformStamped odom_trans;
 		geometry_msgs::Point _pub_position; //小车位置（用来pub的）
 		/*test*/
