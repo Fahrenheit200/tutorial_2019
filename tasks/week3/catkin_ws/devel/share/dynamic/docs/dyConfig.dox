@@ -1,6 +1,0 @@
-\subsubsection parameters ROS parameters
-
-Reads and maintains the following parameters on the ROS server
-
-- \b "~double_param" : \b [double] A double parameter min: 0.0, default: 0.0, max: 1.0
-

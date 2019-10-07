@@ -1,8 +1,0 @@
-prefix=/home/lomgahong/tutorial_2019/tasks/week3/catkin_ws/devel
-
-Name: judge
-Description: Description of judge
-Version: 0.0.0
-Cflags: -I/home/lomgahong/tutorial_2019/tasks/week3/catkin_ws/devel/include
-Libs: -L/home/lomgahong/tutorial_2019/tasks/week3/catkin_ws/devel/lib 
-Requires: 

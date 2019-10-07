@@ -1,2 +1,0 @@
-little_car:publisher
--DCATKIN_DEVEL_PREFIX=/home/lomgahong/tutorial_2019/tasks/week3/ros_project/devel -DCMAKE_INSTALL_PREFIX=/home/lomgahong/tutorial_2019/tasks/week3/ros_project/install -G Unix Makefiles

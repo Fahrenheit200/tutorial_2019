@@ -1,8 +1,0 @@
-prefix=/home/lomgahong/tutorial_2019/tasks/week3/ros_project/install
-
-Name: little_car
-Description: Description of little_car
-Version: 0.0.0
-Cflags: 
-Libs: -L/home/lomgahong/tutorial_2019/tasks/week3/ros_project/install/lib 
-Requires: 

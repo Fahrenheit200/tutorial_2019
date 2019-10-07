@@ -1,8 +1,0 @@
-prefix=/home/lomgahong/tutorial_2019/tasks/week3/ros_project/devel
-
-Name: publisher
-Description: Description of publisher
-Version: 0.0.0
-Cflags: 
-Libs: -L/home/lomgahong/tutorial_2019/tasks/week3/ros_project/devel/lib 
-Requires: 
