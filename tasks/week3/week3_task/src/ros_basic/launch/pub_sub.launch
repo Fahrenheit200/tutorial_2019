@@ -1,0 +1,4 @@
+<launch>
+	<node pkg="ros_basic" name="my_subscribe" type="my_subscribe" output="screen" />
+	<node pkg="ros_basic" name="my_publish" type="my_publish" output="screen" />
+</launch>
