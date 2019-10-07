@@ -37,4 +37,15 @@
 #### server
 	将service传过来的值保存在动态服务器里
 	
+### little car
 
+#### how to run 
+	cd ros_project
+	catkin_make
+	source devel/setup.bash
+	roslaunch launch/little_car.launch
+	(另一个终端)rosrun car_move **publisherr**
+	打开rviz的时候 可以调一下视角，只实现了无噪声的 s形
+#### depend
+	little_car
+	message_generation

@@ -67,10 +67,20 @@ int main(int argc, char **argv)
 	  car_move::command  com;
 	  car_move::speed spe;
 	  int num;
-    num=rand()%4;
+	  if(count<=40)
+		  num=3;
+	  else if(count<=120&&count>40)
+		  num=1;
+	  else if(count<=160&&count>120)
+		  num=3;
+          else 
+		  num=4;
+	  if(count==320)
+	  { count=0;num=2;}
+             
     com.direction=num;
    
-    spe.speed=num/(float)(500);
+    spe.speed=0.008;
 
     ROS_INFO("command: %d, speed: %f",com.direction,spe.speed);
     cout<<endl;
