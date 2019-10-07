@@ -1,0 +1,9 @@
+ <launch>
+ 
+ <node pkg="compare" name="server" type="comp_server" output="screen">
+</node>
+ <node pkg="compare" name="client" type="comp_client" output="screen" launch-prefix="gnome-terminal -e">   
+    
+ </node>
+ 
+ </launch>

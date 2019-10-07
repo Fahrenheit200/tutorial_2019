@@ -1,0 +1,9 @@
+ <launch>
+ 
+ <node pkg="test_msgs" name="pub" type="talker" output="screen">
+</node>
+ <node pkg="test_msgs" name="sub" type="listener" output="screen" launch-prefix="gnome-terminal -e">   
+    
+ </node>
+ 
+ </launch>
