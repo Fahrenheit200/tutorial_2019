@@ -1,0 +1,4 @@
+<launch>
+	<node pkg="judge" type="client" name="client" output="screen"/>
+	<node pkg="judge" type="service" name="service" output="screen"/>
+</launch>

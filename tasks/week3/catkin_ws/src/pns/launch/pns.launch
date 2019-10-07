@@ -1,0 +1,4 @@
+<launch>
+	<node pkg="pns" type="subscriber" name="subscriber" output="screen"/>
+	<node pkg="pns" type="publisher" name="publisher" output="screen"/>
+</launch>
