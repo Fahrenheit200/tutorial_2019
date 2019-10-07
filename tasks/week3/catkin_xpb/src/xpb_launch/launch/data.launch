@@ -1,0 +1,4 @@
+<launch>
+	<node pkg="data_pkg" type="dataPub" name="dataPub" output="screen" />
+	<node pkg="data_pkg" type="dataSub" name="dataSub" output="screen" />
+</launch>
