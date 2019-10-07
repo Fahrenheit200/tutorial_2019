@@ -1,0 +1,6 @@
+<launch>
+
+  <node pkg="test_pkg" name="judge_service" type="judge_service" output="screen"/>
+  <node pkg="test_pkg" name="judge_client" type="judge_client" output="screen"/>
+
+</launch>
