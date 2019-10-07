@@ -1,0 +1,5 @@
+<launch>  
+<node pkg="week3_tutorial" name="random_float" type="random_float_server" />  
+<node pkg="rqt_reconfigure" name="rqt_reconfigure" type="rqt_reconfigure" />
+</launch>
+

@@ -1,0 +1,4 @@
+float32 input
+---
+bool output
+int32 range 

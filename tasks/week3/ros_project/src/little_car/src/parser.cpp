@@ -1,24 +1,24 @@
 #include "parser.h"
-little_car::little_car()
+littlecar::littlecar()
 {
 }
-SVector3 little_car::get_velocity()
+SVector3 littlecar::get_velocity()
 {
 	return this->_velocity;
 }
 
-SVector3 little_car::get_position()
+SVector3 littlecar::get_position()
 {
 	return this->_position;
 }
-void little_car::set_velocity(SVector3 velocity)
+void littlecar::set_velocity(SVector3 velocity)
 {
 	this->_velocity.x = velocity.x;
 	this->_velocity.y = velocity.y;
 	this->_velocity.z = 0.0;
 	return;
 }
-void little_car::add_noise()
+void littlecar::add_noise()
 {
 	float sigma = _noise[_noise_level];
 	double noise[3];
@@ -36,11 +36,11 @@ void little_car::add_noise()
 	return;
 
 }
-void little_car::set_noise_level(int level)
+void littlecar::set_noise_level(int level)
 {
 	_noise_level = level;
 }
-void little_car::update_position()
+void littlecar::update_position()
 {
 	odom_trans.header.frame_id = "odom";		//坐标变换的父坐标系
 	odom_trans.child_frame_id = "base_link";	//子坐标系
@@ -57,7 +57,7 @@ void little_car::update_position()
 	_pub_position.z = _position.z;
 	return;
 }
-void little_car::update_()
+void littlecar::update_()
 {
 	
 	joint_state.header.stamp = ros::Time::now();
@@ -79,7 +79,7 @@ void little_car::update_()
 	broadcaster.sendTransform(odom_trans);//坐标变换广播
 	return;
 }
-void little_car::set_yaw(float yaw)
+void littlecar::set_yaw(float yaw)
 {
 	_yaw = yaw;
 	return;
