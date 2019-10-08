@@ -1,0 +1,5 @@
+ros_project/devel
+ros_project/build
+ros_project/launch
+ros_project/.catkin_workspace
+

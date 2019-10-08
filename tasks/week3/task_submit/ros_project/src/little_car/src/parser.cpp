@@ -1,6 +1,12 @@
+#include <cmath>
 #include "parser.h"
+#include "geometry_msgs/Point.h"
 little_car::little_car()
 {
+}
+int move_forward()
+{
+
 }
 SVector3 little_car::get_velocity()
 {
@@ -74,6 +80,7 @@ void little_car::update_()
 	
 	add_noise(); //添加噪声，请勿修改此函数
 	update_position();//更新位置信息
+	//ROS_INFO("Current velocity:(%lf, %lf)", _velocity.x, _velocity.y);
 	pos_pub.publish(_pub_position);//发布位置信息到 "car_position" 信息格式为 geometry::msgs::Point
 	joint_pub.publish(joint_state);
 	broadcaster.sendTransform(odom_trans);//坐标变换广播
