@@ -1,0 +1,5 @@
+<launch>  
+<node pkg="week3_tutorial" name="Publisher" type="Publisher" />  
+<node pkg="week3_tutorial" name="Subscriber"  type="Subscriber" />
+</launch>
+
