@@ -1,0 +1,5 @@
+<launch>
+
+	<node name="publisher" pkg="week3msg" type="publisher" outpu="screen" />
+	<node name="subscriber" pkg="week3msg" type="subscriber" output="screen"/>
+</launch>
