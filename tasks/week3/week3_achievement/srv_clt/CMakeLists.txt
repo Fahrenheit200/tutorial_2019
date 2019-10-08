@@ -16,10 +16,6 @@ find_package(catkin REQUIRED COMPONENTS
   dynamic_reconfigure
 )
 
-if (CATKIN_ENABLE_TESTING)
-	find_package(roslaunch REQUIRED)
-	roslaunch_add_file_check(launch)
-endif()
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -109,12 +105,7 @@ add_service_files(
 ## LIBRARIES: libraries you create in this project that dependent projects also need
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
-catkin_package(
-  INCLUDE_DIRS include
-  LIBRARIES srv_clt 
-  CATKIN_DEPENDS roscpp rospy std_msgs 
-  DEPENDS system_lib
-)
+catkin_package()
 
 ###########
 ## Build ##
@@ -123,7 +114,7 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-# include
+ include
   ${catkin_INCLUDE_DIRS}
 )
 

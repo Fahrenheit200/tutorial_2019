@@ -11,15 +11,11 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
-  message_generation
+  genmsg
   roslaunch
 )
 
 #roslaunch_add_file_check(launch)
-if (CATKIN_ENABLE_TESTING)
-	find_package(roslaunch REQUIRED)
-	roslaunch_add_file_check(launch)
-endif()
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
 
@@ -55,8 +51,8 @@ endif()
 
 ## Generate messages in the 'msg' folder
 add_message_files(
-   FILES
-   message.msg
+   	DIRECTORY msg
+   	FILES message.msg
 #   Message1.msg
 #   Message2.msg
 )
@@ -80,7 +76,7 @@ generate_messages(
    DEPENDENCIES
    std_msgs
  )
-
+catkin_package()
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
 ################################################
@@ -110,12 +106,6 @@ generate_messages(
 ## LIBRARIES: libraries you create in this project that dependent projects also need
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
-catkin_package(
-  INCLUDE_DIRS include
-  LIBRARIES pub_sub
-  CATKIN_DEPENDS roscpp rospy std_msgs message_runtime
-  DEPENDS system_lib
-)
 
 ###########
 ## Build ##
@@ -124,7 +114,7 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-# include
+ include
   ${catkin_INCLUDE_DIRS}
 )
 
@@ -158,13 +148,12 @@ include_directories(
 #  ${catkin_LIBRARIES}
 # )
 add_executable(publisher src/publisher.cpp)
-#add_dependencies(publisher pub_sub_generate_message_cpp)
 target_link_libraries(publisher ${catkin_LIBRARIES})
+add_dependencies(publisher pub_sub_generate_message_cpp)
 
 add_executable(subscriber src/subscriber.cpp)
-#add_dependencies(subscriber pub_sub_generate_message_cpp)
 target_link_libraries(subscriber ${catkin_LIBRARIES})
-
+add_dependencies(subscriber pub_sub_generate_message_cpp)
 
 #############
 ## Install ##
