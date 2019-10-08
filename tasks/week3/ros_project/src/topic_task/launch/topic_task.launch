@@ -1,0 +1,7 @@
+<launch>
+  <node pkg="topic_task" type="topic_task_send_node" name="topic_task_send_node" output="screen">
+  </node>
+  <node pkg="topic_task" type="topic_task_recieve_node" name="topic_task_recieve_node" output="screen">
+  </node>
+  <node pkg="rqt_reconfigure" type="rqt_reconfigure" name="rqt_reconfigure" output="screen" />
+</launch>

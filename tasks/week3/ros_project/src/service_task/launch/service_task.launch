@@ -1,0 +1,5 @@
+<launch>
+  <node pkg="service_task" type="service_task_server" name="service_task_server" output="screen">
+  </node>
+  <node pkg="rqt_reconfigure" type="rqt_reconfigure" name="rqt_reconfigure" output="screen" />
+</launch>
