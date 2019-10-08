@@ -1,0 +1,6 @@
+<launch>
+    <node pkg="service" type="Servernode" name="Server" launch-prefix="xterm -e"/>
+    <node pkg="service" type="Clientnode" name="Client" launch-prefix="xterm -e">
+    </node>
+
+</launch>
