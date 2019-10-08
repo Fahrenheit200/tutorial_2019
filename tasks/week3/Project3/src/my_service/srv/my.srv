@@ -1,0 +1,6 @@
+string name
+float64 num
+int16 max
+int16 min
+---
+string result

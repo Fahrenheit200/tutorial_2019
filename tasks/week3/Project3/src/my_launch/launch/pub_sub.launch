@@ -1,0 +1,8 @@
+<launch>
+    <node pkg="pub_project" type="my_subscriber" name="talker" output="screen" />
+
+    <node pkg="pub_project" type="my_publisher" name="listener" output="screen" /> 
+
+</launch>
+
+
