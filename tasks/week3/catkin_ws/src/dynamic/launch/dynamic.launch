@@ -1,0 +1,4 @@
+<launch>
+	<node pkg="dynamic" type="server" name="server" output="screen"/>
+	<node pkg="rqt_reconfigure" type="rqt_reconfigure" name="rqt_reconfigure"/>
+</launch>

@@ -8,6 +8,7 @@
 #include <geometry_msgs/Point.h>
 #include <ros/ros.h>
 #include <random>
+
 typedef struct
 {
 	float x = 0.0;
@@ -19,9 +20,9 @@ class little_car
 	private:
 		SVector3 _velocity;	 //小车速度
 		SVector3 _position;  //小车位置
-		float _yaw = 0.0;	 //小车的偏航角
+		float _yaw = 0.0;	 //小车的偏航角（方向）
 		tf::TransformBroadcaster broadcaster;
-		sensor_msgs::JointState joint_state;
+		sensor_msgs::JointState joint_state;//update()中出现
 		int _noise_level = 0;
 		float _noise[5]={0,0.03,0.05,0.05,0.1};
 		geometry_msgs::TransformStamped odom_trans;
@@ -42,8 +43,6 @@ class little_car
 		void set_yaw(float yaw);	//设置小车方向
 		void update_();			//小车状态更新
 		int move_forward();	//前进函数
-		
-
 
 };
 

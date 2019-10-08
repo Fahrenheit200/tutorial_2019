@@ -1,4 +1,7 @@
 #include "parser.h"
+#include "std_msgs/String.h"
+#include <ros/ros.h>
+
 little_car::little_car()
 {
 }
@@ -15,7 +18,8 @@ void little_car::set_velocity(SVector3 velocity)
 {
 	this->_velocity.x = velocity.x;
 	this->_velocity.y = velocity.y;
-	this->_velocity.z = 0.0;
+	this->_velocity.z = 0;
+	//this->add_noise();
 	return;
 }
 void little_car::add_noise()
@@ -40,17 +44,20 @@ void little_car::set_noise_level(int level)
 {
 	_noise_level = level;
 }
+
+
 void little_car::update_position()
 {
 	odom_trans.header.frame_id = "odom";
 	odom_trans.child_frame_id = "base_link";
-    odom_trans.header.stamp = ros::Time::now();
+    	odom_trans.header.stamp = ros::Time::now();
 	_position.x += _velocity.x;	
 	_position.y += _velocity.y;	
 	_position.z += _velocity.z;	
-    odom_trans.transform.translation.x = _position.x;//小车 x 方向的移动 每次加上velocity.x的距离
-    odom_trans.transform.translation.y = _position.y;
-    odom_trans.transform.translation.z = _position.z;
+	//小车 x 方向的移动 每次加上velocity.x的距离
+    	odom_trans.transform.translation.x = _position.x;
+    	odom_trans.transform.translation.y = _position.y;
+    	odom_trans.transform.translation.z = _position.z;
 	odom_trans.transform.rotation = tf::createQuaternionMsgFromYaw(_yaw);
 	_pub_position.x = _position.x;
 	_pub_position.y = _position.y;
@@ -59,16 +66,16 @@ void little_car::update_position()
 }
 void little_car::update_()
 {
-	
+	//joint_state为sensor_msgs::JointState类
 	joint_state.header.stamp = ros::Time::now();
    	joint_state.name.resize(4);
    	joint_state.position.resize(4);
    	joint_state.name[0] ="base_to_wheel_1";
    	joint_state.position[0] = 0;
-    joint_state.name[1] ="base_to_wheel_2";
-    joint_state.position[1] = 0;
-    joint_state.name[2] ="base_to_wheel_3";
-    joint_state.position[2] = 0;
+	joint_state.name[1] ="base_to_wheel_2";
+    	joint_state.position[1] = 0;
+    	joint_state.name[2] ="base_to_wheel_3";
+    	joint_state.position[2] = 0;
 	joint_state.name[3] ="base_to_wheel_4";
 	joint_state.position[3] = 0;
 	
@@ -84,3 +91,4 @@ void little_car::set_yaw(float yaw)
 	_yaw = yaw;
 	return;
 }
+
