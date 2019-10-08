@@ -1,4 +1,0 @@
-<launch>
-	<node name="server" pkg="srv_clt" type="judgement" output="screen"/>
-	<node name="client" pkg="srv_clt" type="sender" output="screen"/>
-</launch>
