@@ -1,0 +1,1 @@
+uint32 rand_int

@@ -1,0 +1,5 @@
+<launch>
+    <node name="talker" pkg="topic_demo" type="talker" output="screen" />
+    <node name="listener" pkg="topic_demo" type="listener" output="screen" />
+    <node name="rqt_reconfigure" pkg="rqt_reconfigure" type="rqt_reconfigure" output="screen" />
+</launch>
