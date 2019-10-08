@@ -1,0 +1,4 @@
+<launch>
+	<node pkg="ros_basic" name="task_server" type="my_server" output="screen" respawn="true"/>
+	<node pkg="ros_basic" name="task_client" type="my_client" output="screen" respawn="true" />
+</launch>
