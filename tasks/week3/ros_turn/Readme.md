@@ -45,7 +45,7 @@
 依赖库：
         -依赖ros 
 编译提示：
-        $ catkin_make //在myros_project目录下 
+        $ catkin_make //在ros_turn目录下 
         $ source devel/setup.bash 
 测试程序：
         $ roslaunch launch/little_car.launch
