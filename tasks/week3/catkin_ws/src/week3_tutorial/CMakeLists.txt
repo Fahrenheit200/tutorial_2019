@@ -102,10 +102,10 @@ find_package(catkin REQUIRED COMPONENTS
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-   INCLUDE_DIRS include
+		#   INCLUDE_DIRS include
    LIBRARIES week3_tutorial
    CATKIN_DEPENDS roscpp rospy std_msgs message_runtime
-   DEPENDS system_lib
+   #   DEPENDS system_lib
 )
 
 ###########
@@ -115,7 +115,7 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-# include
+  include
   ${catkin_INCLUDE_DIRS}
 )
 
@@ -204,7 +204,7 @@ include_directories(
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
 
-include_directories(include ${catkin_INCLUDE_DIRS})
+# include_directories(include ${catkin_INCLUDE_DIRS})
 
 add_executable(Publisher src/Publisher.cpp)
 target_link_libraries(Publisher ${catkin_LIBRARIES})
