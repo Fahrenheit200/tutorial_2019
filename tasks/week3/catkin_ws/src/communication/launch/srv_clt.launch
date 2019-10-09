@@ -1,0 +1,4 @@
+<launch>
+	<node name="judgement" pkg="communication" type="judgement" output="screen"/>
+	<node name="sender" pkg="communication" type="sender" output="screen"/>
+</launch>
