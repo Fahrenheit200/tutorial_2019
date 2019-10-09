@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+	<node name = "custom_srv_server" pkg="custom_srv_service" type="custom_srv_server" output="screen"/>
+	 <node name = "rqt_reconfigure" type="rqt_reconfigure" pkg="rqt_reconfigure" output="screen"/>
+	<node name = "custom_srv_client" pkg="custom_srv_service" type="custom_srv_client" output="screen"/>
+</launch>
