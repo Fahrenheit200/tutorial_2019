@@ -1,10 +1,13 @@
 #include <ros/ros.h>
 #include <custom_srv_service/custom_srv.h>
+#include "sevice.h"
+
 
 bool compare(custom_srv_service::custom_srv::Request &req, custom_srv_service::custom_srv::Response &res)
 {
     if(req.a>req.m) res.b=false;
     else if(req.a<req.m) res.b=true;
+    ROS_INFO("reference:%f",req.m);
     ROS_INFO("request:%f",req.a);
     ROS_INFO("response:[%d]",res.b);
     return true;

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(custom_srv_service)
+project(car_publisher)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -9,9 +9,9 @@ project(custom_srv_service)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   roscpp
+  rospy
   std_msgs
   message_generation
-  dynamic_reconfigure
 )
 
 ## System dependencies are found with CMake's conventions
@@ -55,12 +55,12 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate services in the 'srv' folder
-# add_service_files(
-#   FILES
-#   Service1.srv
-#   Service2.srv
-# )
-
+ add_message_files(
+   FILES
+   carmsg.msg
+#   Message1.msg
+#   Message2.msg
+ )
 ## Generate actions in the 'action' folder
 # add_action_files(
 #   FILES
@@ -69,19 +69,10 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate added messages and services with any dependencies listed here
-# generate_messages(
-#   DEPENDENCIES
-#   std_msgs
-# )
-
-add_service_files(
-  FILES 
-  custom_srv.srv
-)
-generate_messages(
-  DEPENDENCIES 
-  std_msgs
-)
+ generate_messages(
+   DEPENDENCIES
+   std_msgs
+ )
 
 
 ################################################
@@ -104,11 +95,6 @@ generate_messages(
 #   cfg/DynReconf2.cfg
 # )
 
-generate_dynamic_reconfigure_options(
-	cfg/dynamic_srv.cfg
-)
-
-
 ###################################
 ## catkin specific configuration ##
 ###################################
@@ -120,8 +106,8 @@ generate_dynamic_reconfigure_options(
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-  LIBRARIES custom_srv_service
-  CATKIN_DEPENDS  message_runtime roscpp std_msgs
+  LIBRARIES car_publisher
+  CATKIN_DEPENDS roscpp rospy std_msgs message_runtime
 #  DEPENDS system_lib
 )
 
@@ -138,7 +124,7 @@ include_directories(
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/custom_srv_service.cpp
+#   src/${PROJECT_NAME}/car_publisher.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -149,7 +135,7 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-#add_executable(${PROJECT_NAME}_node src/custom_srv_service_node.cpp)
+# add_executable(${PROJECT_NAME}_node src/car_publisher_node.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -162,9 +148,9 @@ include_directories(
 # add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
- #target_link_libraries(${PROJECT_NAME}_node
- #  ${catkin_LIBRARIES}
- #)
+# target_link_libraries(${PROJECT_NAME}_node
+#   ${catkin_LIBRARIES}
+# )
 
 #############
 ## Install ##
@@ -213,21 +199,13 @@ include_directories(
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_custom_srv_service.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_car_publisher.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
-
-add_executable(custom_srv_server src/server.cpp)
-add_executable(custom_srv_client src/client.cpp)
-add_dependencies(custom_srv_server ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-add_dependencies(custom_srv_client ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(custom_srv_server ${catkin_LIBRARIES})
-target_link_libraries(custom_srv_client ${catkin_LIBRARIES})
-
-#add_executable(dynamic_config src/dynamic_config.cpp)
-#target_link_libraries(dynamic_config ${catkin_LIBRARIES})
+add_executable(car_msg src/publisher.cpp)
+target_link_libraries(car_msg ${catkin_LIBRARIES})
 

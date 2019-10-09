@@ -1,24 +1,25 @@
 #include "parser.h"
-little_car::little_car()
+#include <math.h>
+small_car::small_car()
 {
 }
-SVector3 little_car::get_velocity()
+SVector3 small_car::get_velocity()
 {
 	return this->_velocity;
 }
 
-SVector3 little_car::get_position()
+SVector3 small_car::get_position()
 {
 	return this->_position;
 }
-void little_car::set_velocity(SVector3 velocity)
+void small_car::set_velocity(SVector3 velocity)
 {
 	this->_velocity.x = velocity.x;
 	this->_velocity.y = velocity.y;
 	this->_velocity.z = 0.0;
 	return;
 }
-void little_car::add_noise()
+void small_car::add_noise()
 {
 	float sigma = _noise[_noise_level];
 	double noise[3];
@@ -36,28 +37,28 @@ void little_car::add_noise()
 	return;
 
 }
-void little_car::set_noise_level(int level)
+void small_car::set_noise_level(int level)
 {
 	_noise_level = level;
 }
-void little_car::update_position()
+void small_car::update_position()
 {
 	odom_trans.header.frame_id = "odom";		//坐标变换的父坐标系
 	odom_trans.child_frame_id = "base_link";	//子坐标系
     odom_trans.header.stamp = ros::Time::now();
-	_position.x += _velocity.x;	
-	_position.y += _velocity.y;	
+	_position.x += _velocity.y*cos(_yaw);
+	_position.y += abs(_velocity.y*sin(_yaw));	
 	_position.z += _velocity.z;	
     odom_trans.transform.translation.x = _position.x;//小车 x 方向的位置设置
     odom_trans.transform.translation.y = _position.y;
     odom_trans.transform.translation.z = _position.z;
-	odom_trans.transform.rotation = tf::createQuaternionMsgFromYaw(_yaw);//小车方向的改变
+	odom_trans.transform.rotation = tf::createQuaternionMsgFromYaw(_yaw-3.14159*0.5);//小车方向的改变 
 	_pub_position.x = _position.x;
 	_pub_position.y = _position.y;
 	_pub_position.z = _position.z;
 	return;
 }
-void little_car::update_()
+void small_car::update_()
 {
 	
 	joint_state.header.stamp = ros::Time::now();
@@ -79,8 +80,8 @@ void little_car::update_()
 	broadcaster.sendTransform(odom_trans);//坐标变换广播
 	return;
 }
-void little_car::set_yaw(float yaw)
+void small_car::set_yaw(float yaw)
 {
-	_yaw = yaw;
+		_yaw += yaw;
 	return;
 }
