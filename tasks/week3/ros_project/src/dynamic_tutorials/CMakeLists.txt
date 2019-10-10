@@ -89,7 +89,14 @@ find_package(catkin REQUIRED COMPONENTS
 ##     find_package(catkin REQUIRED COMPONENTS ...)
 ##   * uncomment the "generate_dynamic_reconfigure_options" section below
 ##     and list every .cfg file to be processed
+# for dynamic reconfigure
+add_executable(dynamic_reconfigure_node src/server.cpp)
 
+# make sure configure headers are built before any node using them
+add_dependencies(dynamic_reconfigure_node ${PROJECT_NAME}_gencfg)
+
+# for dynamic reconfigure
+target_link_libraries(dynamic_reconfigure_node ${catkin_LIBRARIES})
 ## Generate dynamic reconfigure parameters in the 'cfg' folder
  generate_dynamic_reconfigure_options(
 #   cfg/DynReconf1.cfg
@@ -127,14 +134,7 @@ include_directories(
 # add_library(${PROJECT_NAME}
 #   src/${PROJECT_NAME}/dynamic_tutorials.cpp
 # )
-# for dynamic reconfigure
-add_executable(dynamic_reconfigure_node src/server.cpp)
 
-# make sure configure headers are built before any node using them
-add_dependencies(dynamic_reconfigure_node ${PROJECT_NAME}_gencfg)
-
-# for dynamic reconfigure
-target_link_libraries(dynamic_reconfigure_node ${catkin_LIBRARIES})
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
 ## either from message generation or dynamic reconfigure

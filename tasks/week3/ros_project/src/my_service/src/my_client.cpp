@@ -1,7 +1,6 @@
 #include <ros/ros.h>
 #include<iostream>
 #include "my_service/my.h"
-#include < dynamic_reconfigure/server.h>
 #include <cstdlib>
 using namespace std;
 
@@ -34,19 +33,19 @@ int main(int argc, char** argv)
 
 	my_service::my srv;
 
-	
+	while(1){
 srv.request.name = "WangGuangshuo";
-	
-	
+
+	srv.request.num  = rand() / double(RAND_MAX);
 
 
 
 
     // 请求服务调用
 
-	ROS_INFO("Call service to show my[name:%s] and the num", 
+	ROS_INFO("Call service to show my[name:%s, num:%lf]", 
 
-			 srv.request.name.c_str());
+			 srv.request.name.c_str(), srv.request.num);
 
 
 
@@ -60,7 +59,7 @@ srv.request.name = "WangGuangshuo";
 
 	for(int i=0;i<100000000;i++){}
 
-
+	}
 	return 0;
 
 }
