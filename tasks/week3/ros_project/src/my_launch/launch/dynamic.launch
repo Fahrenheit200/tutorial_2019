@@ -1,0 +1,4 @@
+<launch>
+    <node pkg="dynamic_tutorials" type="dynamic_reconfigure_node" name="dynamic_server" output="screen" />
+</launch>
+
