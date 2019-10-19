@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.10)
+project(RWDispatch)
+include_directories(include)
+aux_source_directory(src SRC_LIST)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
+add_executable(RWDispatch ${SRC_LIST})
+target_link_libraries(RWDispatch pthread)

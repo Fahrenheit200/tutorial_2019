@@ -1,0 +1,5 @@
+**/build/
+**/doc
+**/bin
+RWProject/test/*
+!RWProject/test/test.py
