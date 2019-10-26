@@ -2,8 +2,8 @@
 ## first
 **This line would be bold**
 ## second
--[adressone](/src)
--[adresstwo](/bin)
+- [adressone](/src)
+- [adresstwo](/bin)
 ### third
 ```javascript
 main()
