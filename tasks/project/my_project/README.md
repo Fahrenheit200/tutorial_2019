@@ -1,13 +1,3 @@
-# This is for testing
-## first
-**This line would be bold**
-## second
-- [adressone](/src)
-- [adresstwo](/bin)
-### third
-```javascript
-main()
-{
-cout<<"hello world"<<endl;
-}
-```
+#项目：编程技术方向
+- *Author: 张定暄
+##1. 读者写者问题
