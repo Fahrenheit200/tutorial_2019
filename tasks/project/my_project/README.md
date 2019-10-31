@@ -1,5 +1,5 @@
 # 项目：编程技术方向
-- *Author: 张定暄
+- *Author: 张定暄*
 ##  读者写者问题
 - **工程结构**
 ![png1](https://github.com/sysu-zdx/tutorial_2019/blob/张定暄/tasks/project/my_project/pic/1.png)
@@ -17,11 +17,11 @@
 - **运行方法**
 1.在my_project目录下执行make命令，生成的可执行文件存放于my_project/bin目录下
 2.在my_project/bin目录下执行如下命令：
-```javascript 
+``` 
 ./reader.out [path/testfile_name]
 ```
 如：要使用my_project/TEST_FILES下的test1.txt测试文件，执行：
-```javascript
+```
 ./reader.out ../TEST_FILES/test1.txt
 ```
 - **测试结果截图**
