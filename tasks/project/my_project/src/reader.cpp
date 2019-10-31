@@ -4,6 +4,7 @@
 #include<fstream>
 #include<algorithm>
 #include<deque>
+#include<sstream>
 using namespace std;
 //	this_thread::sleep_for(chrono::milliseconds(1)); 
 mutex mu;
@@ -11,7 +12,7 @@ mutex r;
 deque <int> w_head;
 int w_doing=0;
 int head=0;
-int rate=10;
+int rate=1;
 int lock_status=0;
 void lockIt(int);
 void unlockIt();
@@ -30,6 +31,14 @@ bool compare(th a,th b)//to sort data
 {
 	return a.come<b.come;
 }
+int transf(string a)
+{
+	stringstream ss;
+	int temp_n;
+	ss<<a;
+	ss>>temp_n;
+	return temp_n;
+}
 void write(int num,int come,int last);
 void read(int num,int come,int last);
 int main(int argc,char** argv)
@@ -44,13 +53,38 @@ int main(int argc,char** argv)
 	freopen(argv[1],"r",stdin);
 	string temp;
 	int i=0;
+	int o=0;//record to transf num or come or last
+	int i_temp=0;
+	string s_temp="";
 	while(getline(cin,temp))
 	{
+//		cout<<"temp"<<i<<"  "<<temp<<endl;
+		o=0;
+		i_temp=0;
+		while(i_temp<temp.size())
+		 {
+			// cout<<i_temp<<' ';
+			 s_temp="";
+			if(temp[i_temp]==' ') i_temp++;
+			else if(temp[i_temp]>57){ p[i].type=temp[i_temp];i_temp++; }
+		       		else {
+				while(temp[i_temp]!=' ')
+				{	
+					s_temp=s_temp+temp[i_temp];
+					i_temp++;
+					if(i_temp>=temp.size()) break;
+				
+				}
 
-		p[i].num=temp[0]-48;
-		p[i].type=temp[2];
-		p[i].come=temp[4]-48;
-		p[i].last=temp[6]-48;
+				if(o==0){ p[i].num=transf(s_temp); o=1; }
+				else if(o==1){ p[i].come=transf(s_temp);o=2; }
+				else if(o==2){ p[i].last=transf(s_temp);o=0; }
+				//cout<<i_temp<<" o:"<<o<<"s:"<<s_temp<<endl;
+				i_temp++;
+				}
+		}
+
+			//	cout<<p[i].num<<' '<<p[i].type<<' '<<p[i].come<<' '<<p[i].last<<endl;
 		i++;
 	}
 	/********test*/
