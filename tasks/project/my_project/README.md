@@ -16,7 +16,9 @@
 ```
 - **运行方法**
 1.在my_project目录下执行make命令，生成的可执行文件存放于my_project/bin目录下
+
 2.在my_project/bin目录下执行如下命令：
+
 ``` 
 ./reader.out [path/testfile_name]
 ```
