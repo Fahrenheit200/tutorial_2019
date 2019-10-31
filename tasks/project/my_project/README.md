@@ -23,6 +23,7 @@
 如：要使用my_project/TEST_FILES下的test1.txt测试文件，执行：
 ```javascript
 ./reader.out ../TEST_FILES/test1.txt
+```
 - **测试结果截图**
   - testa.txt
 ![a.input](https://github.com/sysu-zdx/tutorial_2019/blob/张定暄/tasks/project/my_project/pic/4.png)
