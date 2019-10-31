@@ -26,19 +26,33 @@
 ```
 - **测试结果截图**
   - testa.txt
+
 ![a.input](https://github.com/sysu-zdx/tutorial_2019/blob/张定暄/tasks/project/my_project/pic/4.png)
+
 ![a.output](https://github.com/sysu-zdx/tutorial_2019/blob/张定暄/tasks/project/my_project/pic/3.png)
+
   - testb.txt
+
 ![b.input](https://github.com/sysu-zdx/tutorial_2019/blob/张定暄/tasks/project/my_project/pic/5.png)
+
 ![b.output](https://github.com/sysu-zdx/tutorial_2019/blob/张定暄/tasks/project/my_project/pic/6.png)
+
   - testc.txt
+
 ![c.input](https://github.com/sysu-zdx/tutorial_2019/blob/张定暄/tasks/project/my_project/pic/7.png)
+
 ![c.output](https://github.com/sysu-zdx/tutorial_2019/blob/张定暄/tasks/project/my_project/pic/8.png)
+
   - testd.txt
+
 ![d.input](https://github.com/sysu-zdx/tutorial_2019/blob/张定暄/tasks/project/my_project/pic/9.png)
+
 ![d.output](https://github.com/sysu-zdx/tutorial_2019/blob/张定暄/tasks/project/my_project/pic/10.png)
+
 - teste.txt
+
 ![e.input](https://github.com/sysu-zdx/tutorial_2019/blob/张定暄/tasks/project/my_project/pic/11.png)
+
 ![e.ooutput](https://github.com/sysu-zdx/tutorial_2019/blob/张定暄/tasks/project/my_project/pic/12.png)
 	
 		
