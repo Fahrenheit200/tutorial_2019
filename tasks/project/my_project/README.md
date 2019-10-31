@@ -1,6 +1,6 @@
 # 项目：编程技术方向
 - *Author: 张定暄*
-##  读者写者问题
+##  1.读者写者问题
 - **工程结构**
 ![png1](https://github.com/sysu-zdx/tutorial_2019/blob/张定暄/tasks/project/my_project/pic/1.png)
   - src存放.cpp文件，bin存放可执行文件，include存放头文件，TEST_FILES存放测试文件(已放入五个测试文件，以abcde编号，不会和考核时的测试文件重名）
@@ -54,5 +54,7 @@
 ![e.input](https://github.com/sysu-zdx/tutorial_2019/blob/张定暄/tasks/project/my_project/pic/11.png)
 
 ![e.ooutput](https://github.com/sysu-zdx/tutorial_2019/blob/张定暄/tasks/project/my_project/pic/12.png)
-	
+
+# 2.门电路设计
+- *很抱歉因为一些原因没能按时完成这题，所以不做提交，真的很抱歉!*
 		
