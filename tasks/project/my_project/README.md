@@ -2,7 +2,9 @@
 - *Author: 张定暄*
 ##  1.读者写者问题
 - **工程结构**
+
 ![png1](https://github.com/sysu-zdx/tutorial_2019/blob/张定暄/tasks/project/my_project/pic/1.png)
+
   - `src`存放`.cpp`文件，`bin`存放可执行文件，`include`存放头文件，`TEST_FILES`存放测试文件(已放入五个测试文件，以abcde编号，不会和考核时的测试文件重名）
 - **使用到的头文件**
 ```javascript
