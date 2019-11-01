@@ -1,5 +1,5 @@
 function IMU_meas
-% ²âÁ¿Å·À­½Ç
+% æµ‹é‡æ¬§æ‹‰è§’
 global A
 
 A.phi_meas = A.phi+A.phi_error(A.counter);     

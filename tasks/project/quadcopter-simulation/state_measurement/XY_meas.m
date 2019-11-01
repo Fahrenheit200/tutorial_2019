@@ -1,6 +1,6 @@
 function XY_meas
 global A
-% ²âÁ¿µ±Ç°Öµ
+% æµ‹é‡å½“å‰å€¼
 A.X_meas = A.X+A.X_error(A.counter);     
 A.Y_meas = A.Y+A.Y_error(A.counter);     
 end

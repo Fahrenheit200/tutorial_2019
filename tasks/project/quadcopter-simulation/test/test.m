@@ -4,12 +4,12 @@ clc
 
 global A
 
-% Í¼´°
+% å›¾çª—
 figure('units','normalized','position',[.1 .1 .8 .8],'name','Quadrotor','color','w');
 axes('units','normalized','position',[.2 .1 .6 .8]);
 axis equal    
 
-% ³õÊ¼»¯¸÷¸ö²ÎÊıÒÔ¼°ÎïÀíÄ£ĞÍ
+% åˆå§‹åŒ–å„ä¸ªå‚æ•°ä»¥åŠç‰©ç†æ¨¡å‹
 All_Variables;
 quadmodel;
 
@@ -34,10 +34,10 @@ uicontrol('units','normalized','position',[.02 .53 .05 .07],'style','text','font
 uicontrol('units','normalized','position',[.02 .43 .05 .07],'style','text','fontsize',13,'string','X','backgroundcolor','w');
 uicontrol('units','normalized','position',[.02 .33 .05 .07],'style','text','fontsize',13,'string','Y','backgroundcolor','w');
 
-% Go°´Å¥
+% GoæŒ‰é’®
 uicontrol('units','normalized','position',[.11 .25 .1 .07],'style','pushbutton','fontsize',13,'string','Go','callback',@Go);
 
-% ÏÔÊ¾ÒıÇæËÙ¶È
+% æ˜¾ç¤ºå¼•æ“é€Ÿåº¦
 uicontrol('units','normalized','position',[.85 .83 .05 .07],'style','text','fontsize',13,'string','Front M','backgroundcolor',[.5 .7 1]);
 uicontrol('units','normalized','position',[.85 .73 .05 .07],'style','text','fontsize',13,'string','Right M','backgroundcolor',[.5 .7 1]);
 uicontrol('units','normalized','position',[.85 .63 .05 .07],'style','text','fontsize',13,'string','Rear M','backgroundcolor',[.5 .7 1]);
@@ -48,28 +48,28 @@ O2 = uicontrol('units','normalized','position',[.91 .76 .08 .05],'style','text',
 O3 = uicontrol('units','normalized','position',[.91 .66 .08 .05],'style','text','fontsize',13,'string','0','backgroundcolor','w');
 O4 = uicontrol('units','normalized','position',[.91 .56 .08 .05],'style','text','fontsize',13,'string','0','backgroundcolor','w');
 
-% 3D»·¾³
+% 3Dç¯å¢ƒ
 axis([-50 50 -50 50 -2 50])
 grid on
 hold on
 
-% Ïà»ú
+% ç›¸æœº
 camproj perspective 
 camva(25)
 
-% »­ÆğÊ¼µãÊ®×Ö¼Ü
+% ç”»èµ·å§‹ç‚¹åå­—æ¶
 line([-.5 .5],[0 0],[0 0])
 line([0 0],[-.5 .5],[0 0],'color','r')
 
-%·ÂÕæÑ­»·¿ªÊ¼
+%ä»¿çœŸå¾ªç¯å¼€å§‹
 while 1
 tic;  
-% ²âÁ¿µ±Ç°Î»×Ë²ÎÊı
+% æµ‹é‡å½“å‰ä½å§¿å‚æ•°
    Z_meas;
    XY_meas;
    IMU_meas;
    
-% µ÷ÓÃPID¿ØÖÆÆ÷      
+% è°ƒç”¨PIDæ§åˆ¶å™¨      
   % PID_X;
   % PID_Y;
    PID_Z;
@@ -77,34 +77,34 @@ tic;
    PID_pitch;
    PID_heading;
 
-% ¼ÆËã×ªËÙºÍÁ¦  
+% è®¡ç®—è½¬é€Ÿå’ŒåŠ›  
    Motors_Speed;
    Forces;
    
-% Ó¦ÓÃÔË¶¯·½³Ì
+% åº”ç”¨è¿åŠ¨æ–¹ç¨‹
    quadmodel;  
 
-% Õ¹Ê¾ËÄ¸öÒıÇæµÄ×ªËÙ
+% å±•ç¤ºå››ä¸ªå¼•æ“çš„è½¬é€Ÿ
    set(O1,'string',num2str(A.O1));
    set(O2,'string',num2str(A.O2));
    set(O3,'string',num2str(A.O3));
    set(O4,'string',num2str(A.O4));
    
-% ¸üĞÂ·É»úµÄÎ»ÖÃ     
+% æ›´æ–°é£æœºçš„ä½ç½®     
    plot_quad_3D;  
       
-% Ïà»ú¸úËæ
+% ç›¸æœºè·Ÿéš
    campos([A.X+2 A.Y+2 A.Z+2])
    camtarget([A.X A.Y A.Z])
       
-% ÊµÊ±¸üĞÂ
+% å®æ—¶æ›´æ–°
    drawnow
    toc
    
-   A.init = 1;  % ½áÊøÑ­»·
+   A.init = 1;  % ç»“æŸå¾ªç¯
 end
 
-% ×Óº¯Êı Go
+% å­å‡½æ•° Go
 % Altitude          -- E1
 % Roll              -- E2
 % Pitch             -- E3
@@ -119,4 +119,5 @@ end
         A.X_des_EF = str2double(get(E5,'string'));
         A.Y_des_EF = str2double(get(E6,'string'));
     end
+
 end

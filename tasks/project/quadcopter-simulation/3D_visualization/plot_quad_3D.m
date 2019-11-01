@@ -1,5 +1,5 @@
 global A
-% ·É»úµÄ3DÏÔÊ¾
+% é£žæœºçš„3Dæ˜¾ç¤º
 [A.X22,A.Y22,A.Z22]=rotateXYZ(A.Body1X,A.Body1Y,A.Body1Z,A.phi,A.theta,A.psi);
 set(A.Body1,'xdata',A.X22+A.X,'ydata',A.Y22+A.Y,'zdata',A.Z22+A.Z)
 

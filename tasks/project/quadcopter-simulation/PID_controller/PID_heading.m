@@ -1,32 +1,32 @@
 function PID_heading_NC
 global A
 
-% ÓÃÓÚ¸üĞÂ»ı·ÖÏî
+% ç”¨äºæ›´æ–°ç§¯åˆ†é¡¹
   persistent uik1;
   persistent errork1;
   
-  % ³õÊ¼»¯ 
+  % åˆå§‹åŒ– 
   if A.init==0, 
       uik1    = 0; 
       errork1 = 0;
   end
  
-  % Æ«²î
+  % åå·®
  error = A.psi_des - A.psi_meas ;
   
-  % ±ÈÀı
+  % æ¯”ä¾‹
   up = A.psi_KP * error;
   
-  % »ı·Ö
+  % ç§¯åˆ†
   ui = uik1 + A.psi_KI * A.Ts/2 * (error + errork1);
   
-  % Î¢·Ö
+  % å¾®åˆ†
   ud = A.psi_KD*A.r;
   
   
-  % Êä³ö¿ØÖÆ
+  % è¾“å‡ºæ§åˆ¶
   A.U4 = up + ui + ud;
 
-  % ¸üĞÂ»ı·ÖÏî
+  % æ›´æ–°ç§¯åˆ†é¡¹
   uik1    = ui; 
   errork1 = error;

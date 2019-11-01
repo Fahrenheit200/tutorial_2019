@@ -1,33 +1,33 @@
 function PID_Z_NC
 global A
 
-%ÓÃÓÚ¸üĞÂ»ı·ÖÏî
+%ç”¨äºæ›´æ–°ç§¯åˆ†é¡¹
 persistent ui;
 persistent errork1;
 
-  %³õÊ¼»¯
+  %åˆå§‹åŒ–
   if A.init==0
       ui    = 0; 
       errork1 = 0;
   end
  
-  % Æ«²î
+  % åå·®
   error = A.Z_des-A.Z_meas;
   
-  % ±ÈÀı
+  % æ¯”ä¾‹
   up = A.Z_KP * error;
   
-  % »ı·Ö
+  % ç§¯åˆ†
   ui = ui + A.Z_KI * A.Ts/2 * (error + errork1);
   
-  % Î¢·Ö
+  % å¾®åˆ†
   ud = A.Z_KD*A.Z_dot;
   
-  % Êä³ö¿ØÖÆ
+  % è¾“å‡ºæ§åˆ¶
   F = up + ui - ud;
   A.U1 = (A.m*A.g + F)/cos(A.phi_meas)/cos(A.theta_meas);
   
-  % ¸üĞÂÆ«²î
+  % æ›´æ–°åå·®
   errork1 = error;
   
 end

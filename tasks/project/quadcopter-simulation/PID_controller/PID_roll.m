@@ -1,31 +1,31 @@
 function PID_roll_NC
 global A
 
-% ÓÃÓÚ¸üĞÂ»ı·ÖÏî
+% ç”¨äºæ›´æ–°ç§¯åˆ†é¡¹
   persistent uik1;
   persistent errork1;
   
-  % ³õÊ¼»¯
+  % åˆå§‹åŒ–
   if A.init==0, 
       uik1    = 0; 
       errork1 = 0;
   end
  
-  % Æ«²î
+  % åå·®
   error = A.phi_des - A.phi_meas;
 
-  % ±ÈÀı
+  % æ¯”ä¾‹
   up = A.phi_KP * error;
   
-  % »ı·Ö
+  % ç§¯åˆ†
   ui = uik1 + A.phi_KI * A.Ts/2 * (error + errork1);
   
-  % Î¢·Ö
+  % å¾®åˆ†
   ud = A.phi_KD*A.p;
   
-  % Êä³ö¿ØÖÆ
+  % è¾“å‡ºæ§åˆ¶
   A.U2 = up + ui + ud;
 
-  % ¸üĞÂ»ı·ÖÏî
+  % æ›´æ–°ç§¯åˆ†é¡¹
   uik1    = ui; 
   errork1 = error;

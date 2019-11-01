@@ -1,34 +1,34 @@
 global A
 
-% »­Ò»¸ö3DÄ£ÐÍ
+% ç”»ä¸€ä¸ª3Dæ¨¡åž‹
 copter_model_3D
 
-% »·¾³²ÎÊý
+% çŽ¯å¢ƒå‚æ•°
 A.g = 9.81;     
 A.m = 1;      
 A.Ts = .01;     
 A.init = 0;     
 
-A.b = 54.2E-6;    % ÒýÇæ×ªËÙÓëÍÆÁ¦´óÐ¡µÄ±ÈÀýÏµÊý
-A.l = .24;        % ·É»úµÄ°ë¾¶
-A.d = 1.1E-6;     % ÒýÇæ×ªËÙÓëÀ­Á¦´óÐ¡µÄ±ÈÀýÏµÊý
+A.b = 54.2E-6;    % å¼•æ“Žè½¬é€Ÿä¸ŽæŽ¨åŠ›å¤§å°çš„æ¯”ä¾‹ç³»æ•°
+A.l = .24;        % é£žæœºçš„åŠå¾„
+A.d = 1.1E-6;     % å¼•æ“Žè½¬é€Ÿä¸Žæ‹‰åŠ›å¤§å°çš„æ¯”ä¾‹ç³»æ•°
 
-% ÒýÇæ×ªËÙÏÞÖÆ
+% å¼•æ“Žè½¬é€Ÿé™åˆ¶
 A.Motors_limit = 500^2;         
 A.Motors_lowerlimit = -1*((400)^2); 
 
-% PID²ÎÊý
+% PIDå‚æ•°
 % -----------------------------%
-% ²ÎÊýÕû¶¨ÕÒ×î¼Ñ£¬´ÓÐ¡µ½´óË³Ðò²é %
-% ÏÈÊÇ±ÈÀýºó»ý·Ö£¬×îºóÔÙ°ÑÎ¢·Ö¼Ó %
-% ÇúÏßÕñµ´ºÜÆµ·±£¬±ÈÀý¶ÈÅÌÒª·Å´ó %
-% ÇúÏßÆ¯¸¡ÈÆ´óÍå£¬±ÈÀý¶ÈÅÌÍùÐ¡°â %
-% ÇúÏßÆ«Àë»Ø¸´Âý£¬»ý·ÖÊ±¼äÍùÏÂ½µ %
-% ÇúÏß²¨¶¯ÖÜÆÚ³¤£¬»ý·ÖÊ±¼äÔÙ¼Ó³¤ %
-% ÇúÏßÕñµ´ÆµÂÊ¿ì£¬ÏÈ°ÑÎ¢·Ö½µÏÂÀ´ %
-% ¶¯²î´óÀ´²¨¶¯Âý¡£Î¢·ÖÊ±¼äÓ¦¼Ó³¤ %
-% ÀíÏëÇúÏßÁ½¸ö²¨£¬Ç°¸ßºóµÍ4±È1   %
-% Ò»¿´¶þµ÷¶à·ÖÎö£¬µ÷½ÚÖÊÁ¿²»»áµÍ %
+% å‚æ•°æ•´å®šæ‰¾æœ€ä½³ï¼Œä»Žå°åˆ°å¤§é¡ºåºæŸ¥ %
+% å…ˆæ˜¯æ¯”ä¾‹åŽç§¯åˆ†ï¼Œæœ€åŽå†æŠŠå¾®åˆ†åŠ  %
+% æ›²çº¿æŒ¯è¡å¾ˆé¢‘ç¹ï¼Œæ¯”ä¾‹åº¦ç›˜è¦æ”¾å¤§ %
+% æ›²çº¿æ¼‚æµ®ç»•å¤§æ¹¾ï¼Œæ¯”ä¾‹åº¦ç›˜å¾€å°æ‰³ %
+% æ›²çº¿åç¦»å›žå¤æ…¢ï¼Œç§¯åˆ†æ—¶é—´å¾€ä¸‹é™ %
+% æ›²çº¿æ³¢åŠ¨å‘¨æœŸé•¿ï¼Œç§¯åˆ†æ—¶é—´å†åŠ é•¿ %
+% æ›²çº¿æŒ¯è¡é¢‘çŽ‡å¿«ï¼Œå…ˆæŠŠå¾®åˆ†é™ä¸‹æ¥ %
+% åŠ¨å·®å¤§æ¥æ³¢åŠ¨æ…¢ã€‚å¾®åˆ†æ—¶é—´åº”åŠ é•¿ %
+% ç†æƒ³æ›²çº¿ä¸¤ä¸ªæ³¢ï¼Œå‰é«˜åŽä½Ž4æ¯”1  %
+% ä¸€çœ‹äºŒè°ƒå¤šåˆ†æžï¼Œè°ƒèŠ‚è´¨é‡ä¸ä¼šä½Ž %
 % -----------------------------%
 A.Z_KP = 30;                    
 A.Z_KI = .5;                   
@@ -52,101 +52,101 @@ A.psi_KP = 10;
 A.psi_KI = .15;     
 A.psi_KD = -.9;     
   
-%³õÊ¼»¯
-% ¶ÔµØ×ø±ê
+%åˆå§‹åŒ–
+% å¯¹åœ°åæ ‡
 A.X = 0;        
 A.Y = 0;    
 A.Z = 0;
 
-% ¶Ô»úÌå×ø±ê
+% å¯¹æœºä½“åæ ‡
 A.X_BF = 0;        
 A.Y_BF = 0;        
         
-% ¶ÔµØËÙ¶È
+% å¯¹åœ°é€Ÿåº¦
 A.X_dot = 0;   
 A.Y_dot = 0;   
 A.Z_dot = 0;
 
-% ¶Ô»úÌåËÙ¶È
+% å¯¹æœºä½“é€Ÿåº¦
 A.X_dot_BF = 0;    
 A.Y_dot_BF = 0;    
 
-% ¶Ô»úÌå×ø±êÏµµÄ½ÇËÙÂÊ
-A.p = 0;        % ÈÆX
-A.q = 0;        % ÈÆY
-A.r = 0;        % ÈÆZ
+% å¯¹æœºä½“åæ ‡ç³»çš„è§’é€ŸçŽ‡
+A.p = 0;        % ç»•X
+A.q = 0;        % ç»•Y
+A.r = 0;        % ç»•Z
 
-A.phi = 0;      % ¸©Ñö½Ç pitch
-A.theta = 0;    % Æ«º½½Ç yaw
-A.psi = 0;      % ·­¹ö½Ç roll
+A.phi = 0;      % ä¿¯ä»°è§’ pitch
+A.theta = 0;    % åèˆªè§’ yaw
+A.psi = 0;      % ç¿»æ»šè§’ roll
 
-% ×ª¶¯¹ßÁ¿
-A.Ixx = 8.1E-3;     % ÈÆX
-A.Iyy = 8.1E-3;     % ÈÆY
-A.Izz = 14.2E-3;    % ÈÆZ
-A.Jtp = 104E-6;     % Ò¶Æ¬µÄ×ª¶¯¹ßÁ¿
+% è½¬åŠ¨æƒ¯é‡
+A.Ixx = 8.1E-3;     % ç»•X
+A.Iyy = 8.1E-3;     % ç»•Y
+A.Izz = 14.2E-3;    % ç»•Z
+A.Jtp = 104E-6;     % å¶ç‰‡çš„è½¬åŠ¨æƒ¯é‡
 
-% Á¦ºÍÅ¤¾Ø
-A.U1 = 0;       % ÍÆÁ¦
-A.U2 = 0;       % ÈÆXÖáµÄÅ¤¾Ø
-A.U3 = 0;       % ÈÆYÖáµÄÅ¤¾Ø
-A.U4 = 0;       % ÈÆZÖáµÄÅ¤¾Ø
+% åŠ›å’Œæ‰­çŸ©
+A.U1 = 0;       % æŽ¨åŠ›
+A.U2 = 0;       % ç»•Xè½´çš„æ‰­çŸ©
+A.U3 = 0;       % ç»•Yè½´çš„æ‰­çŸ©
+A.U4 = 0;       % ç»•Zè½´çš„æ‰­çŸ©
 
-% ËÄ¸öÒýÇæµÄ×ªËÙ
-A.O1 = 0;       % Ç°
-A.O2 = 0;       % ÓÒ
-A.O3 = 0;       % ºó
-A.O4 = 0;       % ×ó
-A.O = 0;        % ËÄ¸öÒýÇæµÄ×ªËÙÖ®ºÍ
+% å››ä¸ªå¼•æ“Žçš„è½¬é€Ÿ
+A.O1 = 0;       % å‰
+A.O2 = 0;       % å³
+A.O3 = 0;       % åŽ
+A.O4 = 0;       % å·¦
+A.O = 0;        % å››ä¸ªå¼•æ“Žçš„è½¬é€Ÿä¹‹å’Œ
 
-% Î»×ËÄ¿±êÖµ
+% ä½å§¿ç›®æ ‡å€¼
 A.Z_des = 0;            
-A.X_des_EF = 0;         % ¶ÔµØX
-A.Y_des_EF = 0;         % ¶ÔµØY
-A.X_des = 0;            % ¶Ô»úÌåX
-A.Y_des = 0;            % ¶Ô»úÌåY
+A.X_des_EF = 0;         % å¯¹åœ°X
+A.Y_des_EF = 0;         % å¯¹åœ°Y
+A.X_des = 0;            % å¯¹æœºä½“X
+A.Y_des = 0;            % å¯¹æœºä½“Y
 
 A.phi_des = 0;          
 A.theta_des = 0;    
 A.psi_des = 0;          
 
-% ´¢´æÓÃÓÚplotµÄÊý¾Ý                
-A.Z_plot = zeros(1,60*10/A.Ts);      % ZµÄÊµ¼ÊÏìÓ¦
-A.Z_ref_plot = zeros(1,60*10/A.Ts);  % ZµÄÉèÖÃÖµ
+% å‚¨å­˜ç”¨äºŽplotçš„æ•°æ®                
+A.Z_plot = zeros(1,60*10/A.Ts);      % Zçš„å®žé™…å“åº”
+A.Z_ref_plot = zeros(1,60*10/A.Ts);  % Zçš„è®¾ç½®å€¼
 
-A.X_plot = zeros(1,60*10/A.Ts);      % XµÄÊµ¼ÊÏìÓ¦
-A.X_ref_plot = zeros(1,60*10/A.Ts);  % XµÄÉèÖÃÖµ
+A.X_plot = zeros(1,60*10/A.Ts);      % Xçš„å®žé™…å“åº”
+A.X_ref_plot = zeros(1,60*10/A.Ts);  % Xçš„è®¾ç½®å€¼
 
-A.Y_plot = zeros(1,60*10/A.Ts);      % YµÄÊµ¼ÊÏìÓ¦
-A.Y_ref_plot = zeros(1,60*10/A.Ts);  % YµÄÉèÖÃÖµ
+A.Y_plot = zeros(1,60*10/A.Ts);      % Yçš„å®žé™…å“åº”
+A.Y_ref_plot = zeros(1,60*10/A.Ts);  % Yçš„è®¾ç½®å€¼
 
-A.phi_plot = zeros(1,60*10/A.Ts);      % ¸©Ñö½ÇµÄÊµ¼ÊÏìÓ¦
-A.phi_ref_plot = zeros(1,60*10/A.Ts);  % ¸©Ñö½ÇµÄÉèÖÃÖµ
+A.phi_plot = zeros(1,60*10/A.Ts);      % ä¿¯ä»°è§’çš„å®žé™…å“åº”
+A.phi_ref_plot = zeros(1,60*10/A.Ts);  % ä¿¯ä»°è§’çš„è®¾ç½®å€¼
 
-A.theta_plot = zeros(1,60*10/A.Ts);      % Æ«º½½ÇµÄÊµ¼ÊÏìÓ¦
-A.theta_ref_plot = zeros(1,60*10/A.Ts);  % Æ«º½½ÇµÄÉèÖÃÖµ
+A.theta_plot = zeros(1,60*10/A.Ts);      % åèˆªè§’çš„å®žé™…å“åº”
+A.theta_ref_plot = zeros(1,60*10/A.Ts);  % åèˆªè§’çš„è®¾ç½®å€¼
 
-A.psi_plot = zeros(1,60*10/A.Ts);      % ·­¹ö½ÇµÄÊµ¼ÊÏìÓ¦
-A.psi_ref_plot = zeros(1,60*10/A.Ts);  % ·­¹ö½ÇµÄÉèÖÃÖµ
+A.psi_plot = zeros(1,60*10/A.Ts);      % ç¿»æ»šè§’çš„å®žé™…å“åº”
+A.psi_ref_plot = zeros(1,60*10/A.Ts);  % ç¿»æ»šè§’çš„è®¾ç½®å€¼
 
-A.t_plot = [0:A.Ts:60*10-A.Ts];       % Ê±¼ä
-A.counter = 1;                        % ´¢´æÊ±¼äµÄÊý×éÏÂ±ê
+A.t_plot = [0:A.Ts:60*10-A.Ts];       % æ—¶é—´
+A.counter = 1;                        % å‚¨å­˜æ—¶é—´çš„æ•°ç»„ä¸‹æ ‡
 
-% ²âÁ¿Öµ
+% æµ‹é‡å€¼
 A.Z_meas = 0;
 A.phi_meas = 0;
 A.theta_meas = 0;
 A.psi_meas = 0;
 
-% ·þ´ÓÕýÌ¬·Ö²¼µÄÎ»×ËÆ«²î
-A.Z_error = randn(1,60*10/A.Ts)*.0;
-A.phi_error = randn(1,60*10/A.Ts)*.0;
-A.theta_error = randn(1,60*10/A.Ts)*.0;
-A.psi_error = randn(1,60*10/A.Ts)*.0;
-A.X_error = randn(1,60*10/A.Ts)*.0;
-A.Y_error = randn(1,60*10/A.Ts)*.0;
+% æœä»Žæ­£æ€åˆ†å¸ƒçš„ä½å§¿åå·®
+A.Z_error = randn(1,60*10/A.Ts)*.02;
+A.phi_error = randn(1,60*10/A.Ts)*.01;
+A.theta_error = randn(1,60*10/A.Ts)*.01;
+A.psi_error = randn(1,60*10/A.Ts)*.01;
+A.X_error = randn(1,60*10/A.Ts)*.02;
+A.Y_error = randn(1,60*10/A.Ts)*.02;
 
-% Å·À­½ÇµÄÕýÓàÏÒÖµ
+% æ¬§æ‹‰è§’çš„æ­£ä½™å¼¦å€¼
 A.C_phi = cos(A.phi);
 A.C_theta = cos(A.theta);
 A.C_psi = cos(A.psi);

@@ -1,5 +1,5 @@
 function [X,Y,Z]=rotateXYZ(X,Y,Z,phi,theta,psi)
-  % ��ת���󣬽�����һ������ڻ�������ϵ�������任������ڵ�������ϵ
+  % 旋转矩阵，将任意一个相对于机体坐标系的向量变换到相对于地面坐标系
   R_roll = [...
           1, 0, 0;...
           0, cos(phi), -sin(phi);...
@@ -14,9 +14,9 @@ function [X,Y,Z]=rotateXYZ(X,Y,Z,phi,theta,psi)
           0, 0, 1];
   R = R_roll'*R_pitch'*R_yaw';
 
-  % rotate vertices
   B=size(X);
   
+  % 将矩阵作用在图像的每个顶点上
   for i=1:B(2)*B(1)
   pts = [X(i), Y(i), Z(i)]*R;
   

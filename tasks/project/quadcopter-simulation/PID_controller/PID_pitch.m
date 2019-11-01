@@ -1,33 +1,33 @@
 function PID_pitch_NC
 global A
 
-% ÓÃÓÚ¸üĞÂ»ı·ÖÏî
+% ç”¨äºæ›´æ–°ç§¯åˆ†é¡¹
   persistent uik1;
   persistent errork1;
   
-  % ³õÊ¼»¯
+  % åˆå§‹åŒ–
   if A.init==0, 
       uik1    = 0; 
       errork1 = 0;
   end
  
-  % Æ«²î
+  % åå·®
   error = A.theta_des - A.theta_meas;
 
-  % ±ÈÀı
+  % æ¯”ä¾‹
   up = A.theta_KP * error;
   
-  % »ı·Ö
+  % ç§¯åˆ†
   ui = uik1 + A.theta_KI * A.Ts/2 * (error + errork1);
   
-  % Î¢·Ö
+  % å¾®åˆ†
   ud = A.theta_KD*A.q;
   
   
-  % Êä³ö¿ØÖÆ
+  % è¾“å‡ºæ§åˆ¶
   A.U3 = up + ui + ud;
 
-  % »ı·ÖÏîµÄ¸üĞÂ
+  % ç§¯åˆ†é¡¹çš„æ›´æ–°
   uik1    = ui; 
   errork1 = error;
   

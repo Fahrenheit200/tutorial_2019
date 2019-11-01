@@ -1,5 +1,5 @@
 function Z_meas
 global A
-% ²âÁ¿µ±Ç°Öµ
+% æµ‹é‡å½“å‰å€¼
 A.Z_meas = A.Z+A.Z_error(A.counter);     
 end

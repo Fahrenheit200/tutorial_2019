@@ -1,16 +1,16 @@
 global A
 
-% ½«¶ÔµØµÄÔ¤Éè×ø±ê×ª»»ÎªÏà¶ÔÓÚ»úÌå×ø±ê
+% å°†å¯¹åœ°çš„é¢„è®¾åæ ‡è½¬æ¢ä¸ºç›¸å¯¹äºæœºä½“åæ ‡
 A.X_des = A.X_des_EF*cos(A.psi_meas)+A.Y_des_EF*sin(A.psi_meas);    
 
-% ½«¶ÔµØµÄµ±Ç°×ø±ê×ª»»ÎªÏà¶ÔÓÚ»úÌå×ø±êÏµ
+% å°†å¯¹åœ°çš„å½“å‰åæ ‡è½¬æ¢ä¸ºç›¸å¯¹äºæœºä½“åæ ‡ç³»
 A.X_BF = A.X_meas*cos(A.psi_meas)+A.Y_meas*sin(A.psi_meas);            
 A.X_dot_BF = A.X_dot*cos(A.psi_meas)+A.Y_dot*sin(A.psi_meas);    
 
-% PD¿ØÖÆ
+% PDæ§åˆ¶
 A.theta_des = A.X_KP*(A.X_des - A.X_BF) + A.X_KD*A.X_dot;
 
-% ÏŞÖÆÇã½Ç²»ÄÜ³¬¹ı45¡ã
+% é™åˆ¶å€¾è§’ä¸èƒ½è¶…è¿‡45Â°
 if(abs(A.theta_des) > 45*(pi/180))        
     A.theta_des = sign(A.theta_des)*45*pi/180;
 end

@@ -1,8 +1,8 @@
 function quadmodel
 global A
-%·É»úµÄÎïÀíÄ£ĞÍ¡£ÆäÖĞ£¬Ïß¼ÓËÙ¶ÈºÍÏßËÙ¶ÈÏà¶ÔÓÚµØÃæ£¬½Ç¼ÓËÙ¶ÈºÍ½ÇËÙ¶ÈÏà¶ÔÓÚ»úÌå
+%é£æœºçš„ç‰©ç†æ¨¡å‹ã€‚å…¶ä¸­ï¼Œçº¿åŠ é€Ÿåº¦å’Œçº¿é€Ÿåº¦ç›¸å¯¹äºåœ°é¢ï¼Œè§’åŠ é€Ÿåº¦å’Œè§’é€Ÿåº¦ç›¸å¯¹äºæœºä½“
 
-% ¼ÓËÙ¶ÈºÍ½Ç¼ÓËÙ¶È
+% åŠ é€Ÿåº¦å’Œè§’åŠ é€Ÿåº¦
 A.X_ddot = (sin(A.psi)*sin(A.phi) + cos(A.psi)*sin(A.theta)*cos(A.phi))*A.U1/A.m;
 A.Y_ddot = (-cos(A.psi)*sin(A.phi) + sin(A.psi)*sin(A.theta)*cos(A.phi))*A.U1/A.m;
 A.Z_ddot = -A.g + (cos(A.theta)*cos(A.phi))*A.U1/A.m;
@@ -15,11 +15,11 @@ A.phi_dot   = A.p + sin(A.phi)*tan(A.theta)*A.q + cos(A.phi)*tan(A.theta)*A.r;
 A.theta_dot = cos(A.phi)*A.q - sin(A.phi)*A.r;
 A.psi_dot   = sin(A.phi)/cos(A.theta)*A.q + cos(A.phi)/cos(A.theta)*A.r;
 
-% ¿¼ÂÇÁË¿ÕÆøµÄÄ¦²ÁÁ¦
+% è€ƒè™‘äº†ç©ºæ°”çš„æ‘©æ“¦åŠ›
 A.X_ddot = A.X_ddot - A.X_dot*1.2;
 A.Y_ddot = A.Y_ddot - A.Y_dot*1.2;
 
-% ¼ÆËã¸÷¸ö·½ÏòµÄËÙ¶ÈºÍ×ø±ê
+% è®¡ç®—å„ä¸ªæ–¹å‘çš„é€Ÿåº¦å’Œåæ ‡
 A.Z_dot = A.Z_ddot*A.Ts + A.Z_dot;
 A.Z = A.Z_dot*A.Ts + A.Z;
 
@@ -29,17 +29,17 @@ A.X = A.X_dot*A.Ts + A.X;
 A.Y_dot = A.Y_ddot*A.Ts + A.Y_dot;
 A.Y = A.Y_dot*A.Ts + A.Y;
 
-% ¼ÆËã½ÇËÙÂÊ
+% è®¡ç®—è§’é€Ÿç‡
 A.p = A.p_dot*A.Ts+A.p;
 A.q = A.q_dot*A.Ts+A.q;
 A.r = A.r_dot*A.Ts+A.r;
 
-% ¼ÆËã×ËÌ¬
+% è®¡ç®—å§¿æ€
 A.phi = A.phi_dot*A.Ts+A.phi;
 A.theta = A.theta_dot*A.Ts+A.theta;
 A.psi = A.psi_dot*A.Ts+A.psi;
 
-% ÓÃÀ´plotµÄÖµ
+% ç”¨æ¥plotçš„å€¼
 A.Z_plot(A.counter) = A.Z;
 A.Z_ref_plot(A.counter) = A.Z_des;
 

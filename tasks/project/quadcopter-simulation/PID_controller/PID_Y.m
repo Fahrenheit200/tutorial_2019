@@ -1,16 +1,16 @@
 global A
 
-% ½«¶ÔµØµÄÔ¤Éè×ø±ê×ª»»ÎªÏà¶ÔÓÚ»úÌå×ø±ê
+% å°†å¯¹åœ°çš„é¢„è®¾åæ ‡è½¬æ¢ä¸ºç›¸å¯¹äºŽæœºä½“åæ ‡
 A.Y_des = A.Y_des_EF*cos(A.psi_meas)-A.X_des_EF*sin(A.psi_meas);    
 
-% ½«¶ÔµØµÄµ±Ç°×ø±ê×ª»»ÎªÏà¶ÔÓÚ»úÌå×ø±êÏµ
+% å°†å¯¹åœ°çš„å½“å‰åæ ‡è½¬æ¢ä¸ºç›¸å¯¹äºŽæœºä½“åæ ‡ç³»
 A.Y_BF = A.Y_meas*cos(A.psi_meas)-A.X_meas*sin(A.psi_meas);           
 A.Y_dot_BF = A.Y_dot*cos(A.psi_meas)-A.X_dot*sin(A.psi_meas);    
 
-% PD¿ØÖÆ
+% PDæŽ§åˆ¶
 A.phi_des = -1*(A.Y_KP*(A.Y_des - A.Y_BF) + A.Y_KD*A.Y_dot);
 
-% ÏÞÖÆÇã½Ç²»ÄÜ³¬¹ý45¡ã
+% é™åˆ¶å€¾è§’ä¸èƒ½è¶…è¿‡45Â°
 if(abs(A.phi_des) > 45*(pi/180))        % limiter
     A.phi_des = sign(A.phi_des)*45*(pi/180);
 end

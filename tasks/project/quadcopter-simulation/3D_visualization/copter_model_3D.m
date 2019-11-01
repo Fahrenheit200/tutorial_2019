@@ -1,10 +1,10 @@
 global A
-%·É»úµÄ3DÄ£ĞÍ
+%é£æœºçš„3Dæ¨¡å‹
 
-% ·É»úµÄ»ú¼ÜÎ»ÖÃ²ÎÊı
+% é£æœºçš„æœºæ¶ä½ç½®å‚æ•°
 load Quadrotor
 
-% »­·É»ú
+% ç”»é£æœº
 A.Body1 = patch('xdata',A.Body1X,'ydata',A.Body1Y,'zdata',A.Body1Z,'facealpha',.3,'facecolor','b');
 A.Body2 = patch('xdata',A.Body2X,'ydata',A.Body2Y,'zdata',A.Body2Z,'facealpha',.3,'facecolor','b');
 A.RotorF = patch('xdata',A.RotorFX,'ydata',A.RotorFY,'zdata',A.RotorFZ,'facealpha',.3,'facecolor','k');
