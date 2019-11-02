@@ -3,27 +3,25 @@
 #include <String.h>
 
 //加法
-String& add(String& x,String& y)
+void add()
 {
-  //使a是长度短的
-  String a,b;
-  if (x.length()>y.length()){
-    a=y;
-    b=x;
-  }
-  else{
-    a=x;
-    b=y;
-  }
+  File a_file = SD.open("a.txt");
+  File b_file = SD.open("b.txt");
+  int start_a=a_file.size()-1;
+  int start_b=b_file.size()-1;
+  a_file.seek(start_a);
+  b_file.seek(start_b);
+  int pos_a=start_a;
+  int pos_b=start_b;
+
+  if (SD.exists("result.txt")) {SD.remove("result.txt");}
+  File result_file = SD.open("result.txt",FILE_WRITE);
   
-  static String result="";
   int next_plus=0;
-  int i,j;
+  int add_two,this_digit;
   
-  //i=a.length()-1到0, j=b.length()-1到b.length()-a.length()
-  for(i=a.length()-1,j=b.length()-1;i>=0;i--,j--){
-    int add_two=String(a[i]).toInt()+String(b[j]).toInt()+next_plus;
-    int this_digit;
+  while(pos_a>=0 && pos_b>=0){
+    add_two=(a_file.peek()-'0')+(b_file.peek()-'0')+next_plus;
     if (add_two>=10){//进位
       this_digit=add_two-10;
       next_plus=1;
@@ -32,135 +30,92 @@ String& add(String& x,String& y)
       this_digit=add_two;
       next_plus=0;
     }
-    result=String(this_digit)+result; 
+    char c=this_digit+'0'; 
+    result_file.write(c);
+    a_file.seek(--pos_a);
+    b_file.seek(--pos_b);
   }
 
-  //j=b.length()-a.length()-1到0  
-  for(j=b.length()-a.length()-1;j>=0;j--){
-    int add_two=String(b[j]).toInt()+next_plus;
-    int this_digit;
-    if (add_two>=10){//进位
-      this_digit=add_two-10;
-      next_plus=1;
+  if (pos_a<0){
+    while(pos_b>=0){
+      add_two=(b_file.peek()-'0')+next_plus;
+      if (add_two>=10){//进位
+        this_digit=add_two-10;
+        next_plus=1;
+      }
+      else{//不进位
+        this_digit=add_two;
+        next_plus=0;
+      }
+      char c=this_digit+'0'; 
+      result_file.write(c);
+      b_file.seek(--pos_b);
     }
-    else{//不进位
-      this_digit=add_two;
-      next_plus=0;
-    }
-    result=String(this_digit)+result;
   }
+  if (pos_b<0){
+    while(pos_a>=0){
+      add_two=(a_file.peek()-'0')+next_plus;
+      if (add_two>=10){//进位
+        this_digit=add_two-10;
+        next_plus=1;
+      }
+      else{//不进位
+        this_digit=add_two;
+        next_plus=0;
+      }
+      char c=this_digit+'0'; 
+      result_file.write(c);
+      a_file.seek(--pos_a);
+    }  
+  }
+
+  a_file.close();
+  b_file.close();
   
   //最高位是否有进位1
-  if (next_plus>0) result=String(next_plus)+result;
-
-  //除去最前面的0
-  int zeros=0;
-  while(result[zeros]=='0'){
-    zeros++;
+  if (next_plus>0) {
+    char c=next_plus+'0'; 
+    result_file.write(c);
   }
-  result.remove(0,zeros);
+
+  result_file.close();
+
+  if (SD.exists("sum.txt")) {SD.remove("sum.txt");}
+  File sum_file = SD.open("sum.txt",FILE_WRITE);
+
+  result_file = SD.open("result.txt");
+  int start_result=result_file.size()-1;
+  result_file.seek(start_result);
+  int pos_result=start_result;
   
-  //返回结果
-  return result;
-}
-
-//乘法
-String& multiply(String& x,String& y)
-{
-  //除去两个数最前面的0
-  if (x[0]=='0'){
-    int zeros=0;
-    while(x[zeros]=='0'){
-      zeros++;
-    }
-    x.remove(0,zeros);
-  }
-  if (y[0]=='0'){
-    int zeros=0;
-    while(y[zeros]=='0'){
-      zeros++;
-    }
-    y.remove(0,zeros);
+  while(pos_result>=0){
+    char c=result_file.peek();
+    sum_file.write(c);
+    result_file.seek(--pos_result);
   }
   
-  //乘法处理，先不进位
-  long m=x.length(),n=y.length(),len=m+n;
-  int num_result[len]={0};//m位*n位乘法结果的长度是m+n或m+n-1,所有位置初始化为0
-  //memset(num_result,0,len);
-  for(int i=0;i<m;i++){
-    for(int j=0;j<n;j++){
-      //根据竖式乘法的原则，结果中的第x位=第i位和第j位（i+j==x）相乘的结果之和（的个位），暂时不考虑进位，第一位是0
-      num_result[i+j+1]+=(x[i]-'0')*(y[j]-'0');
-    }
-  }
-  
-  //从低位向高位遍历，进位计算出最终结果
-  for(int i=len-1;i>0;i--){
-    num_result[i-1]+=num_result[i]/10;//高位等于原本数值加低位进位
-    num_result[i]%=10;//低位（当前位）数值等于个位上的数
-  }
+  sum_file.close();
+  result_file.close();
 
-  //查看第一位是否有进位
-  int start=0;
-  if (num_result[0]==0) start=1;
-  static String result="";
-  for(int i=start;i<len;i++)
-    result+=String(num_result[i]);
-
-  return result;
-}
-
-//读取文件数据
-String readNumber(String file_name)
-{
-  File show_file = SD.open(file_name);
-  String content="";
-  if (show_file) {
-    while (show_file.available()) {
-      content+=String(show_file.read()-'0'); 
-    }
-    show_file.close();
-  } 
-  return content;
-}
-
-//修改文件数据
-bool modifyNumber(String file_name,String content)
-{
-  if (SD.exists(file_name)) SD.remove(file_name);
-  File modify_file = SD.open(file_name,FILE_WRITE);
-
-  if (modify_file) {
-    modify_file.print(content);
-    modify_file.close();
-    return true;
-  } 
-  else//未成功打开文件
-    return false;
+  if (SD.exists("result.txt")) {SD.remove("result.txt");}
 }
 
 void setup() {
   Serial.begin(9600);
+
   //初始化sd卡
-  SD.begin(4);
+  Serial.println("Initializing SD card...");
+  if (!SD.begin(4)) {
+    Serial.println("initialization failed!");
+    while (1);
+  }
+  Serial.println("initialization done.");
+
+  add();
   
-  //读a,b
-  String a=readNumber("a.txt");
-  String b=readNumber("b.txt");
-
-  //add
-  String add_result=add(a,b);
-
-  //multiply
-  String multiply_result=multiply(a,b);
-  
-  //存结果sum.txt和product.txt
-  modifyNumber("sum.txt",add_result);
-  modifyNumber("product.txt",multiply_result);
-
   Serial.println("Done");
 }
 
 void loop() {
-  
+
 }
