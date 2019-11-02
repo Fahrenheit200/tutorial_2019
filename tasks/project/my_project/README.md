@@ -60,5 +60,5 @@
 ![e.ooutput](https://github.com/sysu-zdx/tutorial_2019/blob/张定暄/tasks/project/my_project/pic/12.png)
 
 # 2.门电路设计
-- *很抱歉因为一些原因没能按时完成这题，所以不做提交，真的很抱歉!*
+- *很抱歉没能按时完成这题，所以不做提交*
 		
