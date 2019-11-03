@@ -6,6 +6,7 @@
 4.快退：长按可以实现快退
 5.切歌：长按可以实现切歌
 ****************************************/
+
 //OLED显示屏
 #include <Wire.h>
 #include <Adafruit_GFX.h>
@@ -541,39 +542,6 @@ void pauseInterrupt(){
 }
 //**************************
 
-//**************LED点阵*********************
-unsigned char row[]={3,10,7,9,5,6,4,8};
-unsigned char col[]={37,45,39,33,43,41,31,35};
-void light(unsigned char x,unsigned char y)//点亮第x行，第y列的点
-{
-  analogWrite(row[x-1],5);
-  analogWrite(col[y-1],0);  
-}
-
-void lightClear()//全部熄灭
-{
-  for(int i=3;i<=10;i++)
-    analogWrite(i,0);
-}
-
-void lights(unsigned char len_rows,unsigned char len_cols,unsigned char rows[],unsigned char cols[])//点亮指定行、列的点集
-{
-  for(int a=0;a<len_rows;a++)
-    analogWrite(row[rows[a]-1],5);
-  for(int b=0;b<len_cols;b++)
-    analogWrite(col[cols[b]-1],0);
-}
-
-void lightAllCols(unsigned char a[])//a是长度为8的数组，代表8列分别亮多少个灯
-{
-  for(int i=7;i>=0;i--){
-    for(int j=a[i];j>=1;j--)
-      light(i+1,j);
-      //analogRead()
-      delay(200);
-  }
-}
-//*******************************
 
 void setup()
 { 
@@ -593,34 +561,7 @@ void setup()
   pause=false;
 
   //OLED屏幕
-  display.begin(SSD1306_SWITCHCAPVCC, 0x3C);  // initialize with the I2C addr 0x3D (for the 128x64) 
-
-  //点阵
-  char d;
-  for(d=3;d<=10;d++)
-    pinMode(d,OUTPUT);
-  for(d=31;d<=45;d+=2)  
-    pinMode(d,OUTPUT);
-  //for(d=3;d<=10;d++)
-  //  analogWrite(d,5);
-  //analogWrite(3,5);//第1行
-  //analogWrite(4,5);//第7行
-  //analogWrite(5,5);//第5行
-  //analogWrite(6,5);//第6行
-  //analogWrite(7,5);//第3行
-  //analogWrite(8,5);//第8行
-  //analogWrite(9,5);//第4行
-  //analogWrite(10,5);//第2行
-  for(d=31;d<=45;d+=2)  
-    analogWrite(d,255);
-  //analogWrite(31,0);//第7列
-  //analogWrite(33,0);//第4列
-  //analogWrite(35,0);//第8列
-  //analogWrite(37,0);//第1列
-  //analogWrite(39,0);//第3列
-  //analogWrite(41,0);//第6列
-  //analogWrite(43,0);//第5列
-  //analogWrite(45,0);//第2列
+  display.begin(SSD1306_SWITCHCAPVCC, 0x3C);  // OLED初始化
 
 }
 
@@ -629,24 +570,23 @@ void loop()
   for(int i=0;i<G;i++){
     //每首歌都需要按下播放键才开始播放
     digitalWrite(PLAY_PIN,HIGH);
-    while (digitalRead(PLAY_PIN)==HIGH){
-      
+    while (digitalRead(PLAY_PIN)==HIGH){      
       //上位机通信，查看歌单
       unsigned char a[]={1,2,3,4,5,6,7,8};
       if (Serial.available()!=0) {
-        if (Serial.read()=='k'){Serial.println(G); lightAllCols(a);
+        if (Serial.read()=='k'){
+          Serial.println(G); 
           for(int i=0;i<G;i++){
             Serial.println(songs_name[i]);  
           }
         } 
-      }
-        
+      }       
     }
     delay(500);
     //开始播放
     for(int x=0;x<length[i];x++)
     {
-      display.clearDisplay(); // clears the screen and buffer
+      display.clearDisplay(); 
       //显示“当前播放：”
       display.drawBitmap(0,0,str1_1,16,16,WHITE);   
       display.drawBitmap(16,0,str1_2,16,16,WHITE);
@@ -708,6 +648,4 @@ void loop()
       noTone(TONE_PIN);
     }
   }
-  
-  //delay(1000); //播放完停1秒
 }
