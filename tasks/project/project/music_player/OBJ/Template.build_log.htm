@@ -1,0 +1,121 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: ¶ÃVision V5.26.2.0
+Copyright (C) 2018 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: JOHN PENG, UNIVERSITY, LIC=Q7GLQ-NVDIN-78AFD-8JZYE-5SI4D-VJYK1
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Professional  Version: 5.26.2.0
+Toolchain Path:  E:\MDK\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 6 (build 750)
+Assembler:       Armasm.exe V5.06 update 6 (build 750)
+Linker/Locator:  ArmLink.exe V5.06 update 6 (build 750)
+Library Manager: ArmAr.exe V5.06 update 6 (build 750)
+Hex Converter:   FromElf.exe V5.06 update 6 (build 750)
+CPU DLL:         SARMCM3.DLL V5.26.2.0
+Dialog DLL:      DARMSTM.DLL V1.68.0.0
+Target DLL:      Segger\JL2CM3.dll V2.99.31.0
+Dialog DLL:      TARMSTM.DLL   V1.66.0.0
+ 
+<h2>Project:</h2>
+D:\mystm32\‘Ÿ’Ωstm\music_player\USER\Template.uvprojx
+Project File Date:  10/31/2019
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 6 (build 750)', folder: 'E:\MDK\ARM\ARMCC\Bin'
+Build target 'Template'
+compiling note.c...
+compiling buzzer.c...
+..\HARDWARE\oled.h(34): warning:  #1295-D: Deprecated declaration OLED_Init - give arg types
+  void OLED_Init();
+..\HARDWARE\oled.h(35): warning:  #1295-D: Deprecated declaration OLED_GPIO_Conf - give arg types
+  void OLED_GPIO_Conf();
+..\HARDWARE\oled.h(44): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\HARDWARE\key.h(15): warning:  #1295-D: Deprecated declaration KEY_Init - give arg types
+  void KEY_Init();
+..\HARDWARE\key.h(16): warning:  #1295-D: Deprecated declaration EXTIX_Init - give arg types
+  void EXTIX_Init();
+..\HARDWARE\key.h(18): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\HARDWARE\buzzer.c: 6 warnings, 0 errors
+compiling GUI.c...
+..\HARDWARE\GUI.h(5): warning:  #1295-D: Deprecated declaration MENU_FST - give arg types
+  void MENU_FST();
+..\HARDWARE\GUI.h(8): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\HARDWARE\oled.h(34): warning:  #1295-D: Deprecated declaration OLED_Init - give arg types
+  void OLED_Init();
+..\HARDWARE\oled.h(35): warning:  #1295-D: Deprecated declaration OLED_GPIO_Conf - give arg types
+  void OLED_GPIO_Conf();
+..\HARDWARE\oled.h(44): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\HARDWARE\GUI.c(20): warning:  #177-D: variable "i"  was declared but never referenced
+  	u8 i,j;
+..\HARDWARE\GUI.c(20): warning:  #177-D: variable "j"  was declared but never referenced
+  	u8 i,j;
+..\HARDWARE\GUI.c: 7 warnings, 0 errors
+compiling key.c...
+..\HARDWARE\key.h(15): warning:  #1295-D: Deprecated declaration KEY_Init - give arg types
+  void KEY_Init();
+..\HARDWARE\key.h(16): warning:  #1295-D: Deprecated declaration EXTIX_Init - give arg types
+  void EXTIX_Init();
+..\HARDWARE\key.h(18): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\HARDWARE\GUI.h(5): warning:  #1295-D: Deprecated declaration MENU_FST - give arg types
+  void MENU_FST();
+..\HARDWARE\GUI.h(8): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\HARDWARE\key.c: 5 warnings, 0 errors
+compiling main.c...
+..\HARDWARE\pwm.h(7): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\HARDWARE\oled.h(34): warning:  #1295-D: Deprecated declaration OLED_Init - give arg types
+  void OLED_Init();
+..\HARDWARE\oled.h(35): warning:  #1295-D: Deprecated declaration OLED_GPIO_Conf - give arg types
+  void OLED_GPIO_Conf();
+..\HARDWARE\oled.h(44): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\HARDWARE\key.h(15): warning:  #1295-D: Deprecated declaration KEY_Init - give arg types
+  void KEY_Init();
+..\HARDWARE\key.h(16): warning:  #1295-D: Deprecated declaration EXTIX_Init - give arg types
+  void EXTIX_Init();
+..\HARDWARE\key.h(18): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\HARDWARE\GUI.h(5): warning:  #1295-D: Deprecated declaration MENU_FST - give arg types
+  void MENU_FST();
+..\HARDWARE\GUI.h(8): warning:  #1-D: last line of file ends without a newline
+  #endif
+main.c(10): warning:  #1295-D: Deprecated declaration SWJ_BAN - give arg types
+  void SWJ_BAN();
+main.c(13): warning:  #177-D: variable "i"  was declared but never referenced
+  	u8 i,j;
+main.c(13): warning:  #177-D: variable "j"  was declared but never referenced
+  	u8 i,j;
+main.c(40): warning:  #1-D: last line of file ends without a newline
+  }
+main.c: 13 warnings, 0 errors
+linking...
+Program Size: Code=12388 RO-data=404 RW-data=4632 ZI-data=1832  
+FromELF: creating hex file...
+"..\OBJ\Template.axf" - 0 Error(s), 31 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.STM32F1xx_DFP.2.3.0.pack
+                Keil.STM32F1xx_DFP.2.3.0
+                STMicroelectronics STM32F1 Series Device Support, Drivers and Examples
+
+<h2>Collection of Component include folders:</h2>
+  .\RTE\_Template
+  F:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\2.3.0\Device\Include
+
+<h2>Collection of Component Files used:</h2>
+Build Time Elapsed:  00:00:02
+</pre>
+</body>
+</html>
