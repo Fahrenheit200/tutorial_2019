@@ -1,0 +1,73 @@
+create 0 XOR
+create 1 AND
+
+create 2 XOR
+create 3 AND
+create 4 XOR
+create 5 AND
+create 6 OR
+
+create 7 XOR
+create 8 AND
+create 9 XOR
+create 10 AND
+create 11 OR
+
+create 12 XOR
+create 13 AND
+create 14 XOR
+create 15 AND
+create 16 OR
+
+create -1
+create -2
+create -3
+create -4
+create -5
+create -6
+create -7
+create -8
+
+connect 1 4 1
+connect 1 5 1
+connect 2 4 0
+connect 2 5 0
+connect 3 6 0
+connect 5 6 1
+
+connect 6 9 1
+connect 6 10 1
+connect 7 9 0
+connect 7 10 0
+connect 8 11 0
+connect 10 11 1
+
+connect 11 14 1
+connect 11 15 1
+connect 12 14 0
+connect 12 15 0
+connect 13 16 0
+connect 15 16 1
+
+connect -1 0 0
+connect -1 1 0
+connect -2 0 1
+connect -2 1 1
+connect -3 2 0
+connect -3 3 0
+connect -4 2 1
+connect -4 3 1
+
+connect -5 7 0
+connect -5 8 0
+connect -6 7 1
+connect -6 8 1
+connect -7 12 0
+connect -7 13 0
+connect -8 12 1
+connect -8 13 1
+
+setOutput 0 4 9 14 16
+
+setInput -1 0 1 -2 0 1 -3 0 1 -4 0 0 -5 0 1 -6 0 0 -7 0 1 -8 0 0
+exec
