@@ -1,0 +1,6 @@
+<launch>
+
+		<node pkg="publish_subscribe" name="publish0" type="publish" required="true" output="screen"/>
+		<node pkg="publish_subscribe" name="subscribe0" type="subscribe" output="screen" respawn="true"/>
+
+</launch>
